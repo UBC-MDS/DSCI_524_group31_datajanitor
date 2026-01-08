@@ -11,4 +11,3 @@ def detect_outliers(df):
     Returns
     -------
     ...
-    """
