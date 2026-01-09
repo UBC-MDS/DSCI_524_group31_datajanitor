@@ -11,5 +11,5 @@ def detect_outliers(df, multiplier: 1.5):
 
     Returns
     -------
-    A pandas DataFrame which is df with outliers removed according to the multipler
+    A pandas DataFrame which is df with outliers removed according to the multiplier
     """
