@@ -5,27 +5,6 @@
 | Package | [![Latest PyPI Version](https://img.shields.io/pypi/v/datajanitor.svg)](https://pypi.org/project/datajanitor/) [![Supported Python Versions](https://img.shields.io/pypi/pyversions/datajanitor.svg)](https://pypi.org/project/datajanitor/) |
 | Meta | [![Code of Conduct](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md) |
 
-*TODO: the above badges that indicate python version and package version will only work if your package is on PyPI. If you don't plan to publish to PyPI, you can remove them.*
-
-datajanitor is a project that (describe what it does here).
-
-## Get started
-
-You can install this package into your preferred Python environment using pip:
-
-``` bash
-$ pip install datajanitor
-```
-
-TODO: Add a brief example of how to use the package to this section
-
-To use datajanitor in your code:
-
-``` python
->>> import datajanitor
->>> datajanitor.hello_world()
-```
-
 ## Project Outline
 
 ### Data janitor
@@ -50,6 +29,23 @@ This project is a Python package that focuses on basic data cleaning and validat
 
 Some existing Python packages provide similar functionality. For example, `pandera` allows users to define and validate schemas for pandas DataFrames. Outlier detection methods are also available in `scikit-learn`, which includes more advanced algorithms.\
 Compared to these tools, this package is intentionally lightweight and simpler. It is designed for small projects, assignments, or quick checks where a full validation framework would be unnecessary or too complex.
+
+## Get started
+
+You can install this package into your preferred Python environment using pip:
+
+``` bash
+$ pip install datajanitor
+```
+
+TODO: Add a brief example of how to use the package to this section
+
+To use datajanitor in your code:
+
+``` python
+>>> import datajanitor
+>>> datajanitor.hello_world()
+```
 
 ## Contributor
 
