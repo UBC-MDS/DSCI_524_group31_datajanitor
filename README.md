@@ -27,6 +27,12 @@ To use datajanitor in your code:
 >>> datajanitor.hello_world()
 ```
 
+## Contributors
+- Karan Bains
+- Yasaman Eftekharypour
+- Sameel Syed
+- Yuting Ji
+
 ## Copyright
 
 - Copyright © 2026 Karan Bains, Yasaman Eftekharypour, Sameel Syed, Yuting Ji.
