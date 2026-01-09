@@ -1,15 +1,41 @@
-def detect_outliers(df, multiplier: 1.5):
+def detect_outliers(df, multiplier=1.5, method="iqr"):
     """
-    Detect and remove outliers in the df DataFrame using the interquartile range
+    Identifies potential outliers in numeric columns of a DataFrame using a rule-based approach 
+    (for example, the interquartile range (IQR) method) and returns a filtered DataFrame.
 
     Parameters
     ----------
-    df : pd.DataFrame
-        A pandas DataFrame
-    multiplier: float
-        The multiplier for the interquartile range. Default is 1.5
+    df : pandas.DataFrame
+        The input dataset containing numeric columns to be analyzed for potential outliers. 
+        
+    multiplier : float
+        The coefficient used to determine the reach of the bounds or "whiskers." For example, a value of 1.5 is the standard for flagging mild outliers, 
+        while 3.0 is often used for extreme outliers in IQR method.
 
+    method : str
+        The statistical method to use ("iqr" or "zscore")
+    
     Returns
     -------
-    A pandas DataFrame which is df with outliers removed according to the multiplier
+    A new pandas DataFrame with the identified outlier rows removed according to the specified method and the multiplier.
+
+    Raises
+    ------
+    ValueError
+        If an unsupported method is provided.
+
+    TypeError
+        If the input df is not a pandas DataFrame.
+
+    Notes
+    -----
+    - The original dataset is not modified.
+    - The missing values in numeric columns are ignored.
+
+    Examples
+    --------
+    >>> detect_outliers(data, method="zscore")
+    >>> detect_outliers(data, multiplier=3.0)
+    >>> detect_outliers(data, multiplier=2.5, method="zscore")
     """
+    pass
