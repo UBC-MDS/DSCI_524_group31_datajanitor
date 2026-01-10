@@ -47,7 +47,7 @@ To use datajanitor in your code:
 >>> datajanitor.hello_world()
 ```
 
-## Contributor
+## Contributors
 
 Group 31: Karan Partap Bains, Yasaman Eftekharypour, Sameel Syed, Yuting Ji
 
