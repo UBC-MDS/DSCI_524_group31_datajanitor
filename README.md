@@ -38,8 +38,6 @@ You can install this package into your preferred Python environment using pip:
 $ pip install datajanitor
 ```
 
-TODO: Add a brief example of how to use the package to this section
-
 To use datajanitor in your code:
 
 ``` python
