@@ -8,11 +8,11 @@ def detect_outliers(df, multiplier=1.5, method="iqr"):
     df : pandas.DataFrame
         The input dataset containing numeric columns to be analyzed for potential outliers. 
         
-    multiplier : float
+    multiplier : float, default=1.5
         The coefficient used to determine the reach of the bounds or "whiskers." For example, a value of 1.5 is the standard for flagging mild outliers, 
         while 3.0 is often used for extreme outliers in IQR method.
 
-    method : str
+    method : str, default="iqr"
         The statistical method to use ("iqr" or "zscore")
     
     Returns
