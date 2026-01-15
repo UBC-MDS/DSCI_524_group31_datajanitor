@@ -1,0 +1,10 @@
+name: DataJanitor
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.11.6
+  - conda-lock=>3.0.4
+  - pandas=2.1.2
+  - pytest
