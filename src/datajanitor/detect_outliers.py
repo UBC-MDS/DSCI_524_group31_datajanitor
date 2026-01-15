@@ -1,4 +1,4 @@
-def detect_outliers(df, multiplier=1.5, method="iqr"):
+def detect_outliers(df, multiplier=1.5, method="iqr", columns="all"):
     """
     Identifies potential outliers in numeric columns of a DataFrame using a rule-based approach 
     (for example, the interquartile range (IQR) method) and returns a filtered DataFrame.
@@ -13,7 +13,10 @@ def detect_outliers(df, multiplier=1.5, method="iqr"):
         while 3.0 is often used for extreme outliers in IQR method.
 
     method : str, default="iqr"
-        The statistical method to use ("iqr" or "zscore")
+        The statistical method to use ("iqr" or "zscore").
+
+    columns: list, default="all"
+        The list of all numeric columns to be checked for outliers. Outliers are detected in all numeric columns if columns="all".
     
     Returns
     -------
