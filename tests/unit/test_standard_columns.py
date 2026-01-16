@@ -64,14 +64,13 @@ def test_standardize_columns_raises_type_error_for_non_dataframe():
 
 def test_standardize_columns_empty_dataframe():
     """
-    Edge case: empty DataFrame with no columns.
-    The function should return a copy and not raise an error.
+    Edge case: empty DataFrame (no columns).
+    The function should raise ValueError based on the updated specification.
     """
     df = pd.DataFrame()
-    out = standardize_columns(df)
 
-    assert out.columns.tolist() == []
-    assert out is not df
+    with pytest.raises(ValueError, match="empty DataFrame"):
+        standardize_columns(df)
 
 def test_standardize_columns_raises_value_error_for_empty_cleaned_name():
     """
