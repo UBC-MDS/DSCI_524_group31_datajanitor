@@ -62,3 +62,34 @@ def test_standardize_columns_raises_type_error_for_non_dataframe():
     with pytest.raises(TypeError):
         standardize_columns(["not a dataframe"])
 
+def test_standardize_columns_empty_dataframe():
+    """
+    Edge case: empty DataFrame with no columns.
+    The function should return a copy and not raise an error.
+    """
+    df = pd.DataFrame()
+    out = standardize_columns(df)
+
+    assert out.columns.tolist() == []
+    assert out is not df
+
+def test_standardize_columns_raises_value_error_for_empty_cleaned_name():
+    """
+    Edge case: column names that become empty after cleaning
+    (e.g., only whitespace).
+    This should raise ValueError because empty column names are ambiguous.
+    """
+    df = pd.DataFrame({"   ": [1], "valid": [2]})
+
+    with pytest.raises(ValueError, match="empty"):
+        standardize_columns(df)
+
+def test_standardize_columns_cleans_extra_underscores_and_whitespace():
+    """
+    Edge case: messy column names with extra underscores and whitespace.
+    The function should collapse underscores and strip leading/trailing ones.
+    """
+    df = pd.DataFrame({"A__  __B": [1], "  __C__  ": [2]})
+    out = standardize_columns(df)
+
+    assert out.columns.tolist() == ["a_b", "c"]
