@@ -39,6 +39,10 @@ ValueError
             "standardize_columns expects a pandas.DataFrame as input."
         )
 
+    if df.shape[1] == 0:
+        raise ValueError(
+            "standardize_columns does not accept an empty DataFrame with no columns."
+        )
    
     def clean_column_name(name):
         """Standardize a single column name."""
@@ -49,7 +53,7 @@ ValueError
         return name
 
     new_columns = [clean_column_name(col) for col in df.columns]
-    
+
     if any(col == "" for col in new_columns):
             raise ValueError(
                 "standardize_columns produced an empty column name after cleaning."
