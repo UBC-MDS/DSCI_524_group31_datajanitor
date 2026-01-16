@@ -41,7 +41,7 @@ def test_detect_outliers_column_names():
     result = detect_outliers(df, columns = "all")
     assert len(result_all) == 4
     assert 100 not in result['B'].values
-  
+
 def test_detect_outliers_invalid_type():
     with pytest.raises(TypeError):
          detect_outliers([1, 2, 3, 100], method = "iqr")
