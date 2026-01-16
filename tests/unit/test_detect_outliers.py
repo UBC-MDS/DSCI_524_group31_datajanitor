@@ -44,7 +44,7 @@ def test_detect_outliers_column_names():
 
 def test_detect_outliers_invalid_type():
     with pytest.raises(TypeError):
-         detect_outliers([1, 2, 3, 100], method = "iqr")
+        detect_outliers([1, 2, 3, 100], method = "iqr")
 
 def test_detect_outliers_invalid_method():
     df = pd.DataFrame({'val': [1, 2, 3]})
