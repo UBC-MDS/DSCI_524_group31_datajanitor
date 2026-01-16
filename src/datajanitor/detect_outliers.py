@@ -41,4 +41,14 @@ def detect_outliers(df, multiplier=1.5, method="iqr", columns="all"):
     >>> detect_outliers(data, multiplier=3.0)
     >>> detect_outliers(data, multiplier=2.5, method="zscore")
     """
-    pass
+    if not isinstance(df, pd.DataFrame):
+        raise(ValueError)
+
+    if method != "iqr" and method != "zscore":
+        raise(TypeError)
+
+    for c in df.columns:
+        if pd.api.types.is_numeric_dtype(df["c"]):
+            not_outliers = ((df["c"] < ...) & (df["c"] < ...))
+            df = df[not_outliers]
+    return df
