@@ -25,17 +25,17 @@ def test_detect_outliers_zscore_logic():
     
     result = detect_outliers(df, multiplier=3.0, method="zscore", columns="all")
     
-    assert result.equals(df)
+    assert result == df
     assert 50 not in result['val'].values
 
 def test_detect_outliers_column_names():
-    data = {'A': [1, 2, 1, 2, 1],      # Clean column
-            'B': [1, 2, 1, 2, 100]    # Outlier at index 4}
+    data = {'A': [1, 2, 1, 2, 1],     # Clean column
+            'B': [1, 2, 1, 2, 100]}   # Outlier at index 4
     df = pd.DataFrame(data)
     
     # Check column A
     result = detect_outliers(df, columns = ['A'])
-    assert result.equals(df)
+    assert result == df
     
     # Check all columns
     result = detect_outliers(df, columns = "all")
