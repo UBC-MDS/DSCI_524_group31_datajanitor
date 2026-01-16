@@ -39,7 +39,7 @@ def test_detect_outliers_column_names():
     
     # Check all columns
     result = detect_outliers(df, columns = "all")
-    assert len(result_all) == 4
+    assert len(result) == 4
     assert 100 not in result['B'].values
 
 def test_detect_outliers_invalid_type():
