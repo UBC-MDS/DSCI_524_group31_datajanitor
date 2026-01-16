@@ -1,3 +1,6 @@
+import re
+import pandas as pd
+
 def standardize_columns(df):
     """
 Cleans column names by making them consistent and predictable.
