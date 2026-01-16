@@ -52,7 +52,7 @@ def detect_outliers(df, multiplier=1.5, method="iqr", columns="all"):
             if pd.api.types.is_numeric_dtype(df[c]):
                 not_outliers = ((df[c] < ...) & (df[c] > ...))
                 df = df[not_outliers]
-    else:
+    elif isinstance(columns, set):
         for c in df.columns:
             if pd.api.types.is.numeric_dtype(df[c]) and c in columns:
                 not_outliers = ((df[c] < ...) & (df[c] > ...))
