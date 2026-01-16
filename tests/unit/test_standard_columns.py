@@ -93,3 +93,14 @@ def test_standardize_columns_cleans_extra_underscores_and_whitespace():
     out = standardize_columns(df)
 
     assert out.columns.tolist() == ["a_b", "c"]
+
+def test_standardize_columns_single_column_dataframe():
+    """
+    Edge case: DataFrame with a single column.
+    The function should standardize the name and return a valid DataFrame.
+    """
+    df = pd.DataFrame({"  Single   Column  ": [1, 2, 3]})
+    out = standardize_columns(df)
+
+    assert out.columns.tolist() == ["single_column"]
+    assert out is not df
