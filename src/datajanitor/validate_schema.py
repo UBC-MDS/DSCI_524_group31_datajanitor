@@ -1,3 +1,20 @@
+import pandas as pd
+
+class SchemaValidationError(ValueError):
+    """
+    Raised when data does not conform to the provided schema.
+
+    Attributes
+    ----------
+    errors : dict
+        Dictionary mapping column names to descriptive error messages.
+    """
+
+    def __init__(self, errors):
+        self.errors = errors
+        super().__init__("Schema validation failed")
+
+
 def validate_schema(data, schema):
     """
     Validate a dataset against a predefined schema.
@@ -30,20 +47,17 @@ def validate_schema(data, schema):
 
     Returns
     -------
-    is_valid : bool
-        True if the dataset conforms to the schema; False otherwise.
-
-    errors : dict
-        Dictionary containing schema validation errors, where keys are column
-        names and values are descriptive error messages explaining the failure.
+    None
+        if the dataset conforms to the schema
 
     Raises
     ------
     TypeError
         If the input data is not a pandas DataFrame.
 
-    ValueError
-        If the schema is not provided in the expected dictionary format.
+    SchemaValidationError
+        If the dataset does not conform to the schema. The exception contains
+        a dictionary mapping column names to descriptive error messages.
 
     Notes
     -----
@@ -54,7 +68,47 @@ def validate_schema(data, schema):
 
     Examples
     --------
-    >>> validate_schema(data, schema)
-    >>> is_valid, errors = validate_schema(data, schema)
+    >>> try:
+            validate_schema(data, schema)
+        except SchemaValidationError as e:
+            print(e.errors)
     """
-    pass
+    
+    errors = {}
+
+    if not isinstance(data, pd.DataFrame):
+        raise TypeError("Input data must be a pandas DataFrame")
+    
+    if not isinstance(schema, dict):
+        raise TypeError("Schema must be a dictionary")
+
+    type_mapping = {
+            "int": ["int", "Int64", "int8", "int16", "int32", "int64", "uint8", "uint16", "uint32", "uint64"],
+            "float": ["float", "Float64", "float32", "float64", "float16", "float128", "float256"],
+            "str": ["object", "string"],
+            "bool": ["bool", "boolean"],
+            "object": ["object"],
+        }
+
+    for column, spec in schema.items():
+
+        if spec.get("required", True) and column not in data.columns:
+            errors[column] = f"Required Column '{column}' not found in data"
+            continue
+
+        if column not in data.columns:
+            continue
+
+        expected_type = spec.get("type")
+        if expected_type is not None:
+            actual_dtype = str(data[column].dtype)
+            expected_dtypes = type_mapping.get(expected_type)
+
+            if expected_dtypes and not any(t in actual_dtype for t in expected_dtypes):
+                errors[column] = f"Column '{column}' has incorrect type. Expected {expected_type}, got {actual_dtype}."
+
+    if errors:
+        raise SchemaValidationError(errors)
+
+    return None
+
