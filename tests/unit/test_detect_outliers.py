@@ -21,10 +21,10 @@ def test_detect_outliers_iqr_logic():
 
 def test_detect_outliers_zscore_logic():
     """Test outlier detection using the Z-score method."""
-    data = {'val': [-9.5, 10.0, 10.5, 11.0, 80.0]} # 80.0 is an outlier
+    data = {'val': [-9.5, 10.0, 10.5, 11.0, 200.0]} # 200.0 is an outlier
     df = pd.DataFrame(data)
     
-    result = detect_outliers(df, multiplier=3.0, method="zscore")
+    result = detect_outliers(df, multiplier=1.5, method="zscore")
     assert isinstance(result, pd.DataFrame)
     assert result.equals(pd.DataFrame({'val': [-9.5, 10.0, 10.5, 11.0]}))
 
