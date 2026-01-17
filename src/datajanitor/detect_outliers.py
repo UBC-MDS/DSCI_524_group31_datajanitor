@@ -15,8 +15,8 @@ def detect_outliers(df, multiplier=1.5, method="iqr", columns="all"):
     method : str, default="iqr"
         The statistical method to use ("iqr" or "zscore").
 
-    columns: list, default="all"
-        The list of all numeric columns to be checked for outliers. Outliers are detected in all numeric columns if columns="all".
+    columns: set, default="all"
+        The set of all numeric columns to be checked for outliers. Outliers are detected in all numeric columns if columns="all".
     
     Returns
     -------
@@ -41,4 +41,25 @@ def detect_outliers(df, multiplier=1.5, method="iqr", columns="all"):
     >>> detect_outliers(data, multiplier=3.0)
     >>> detect_outliers(data, multiplier=2.5, method="zscore")
     """
-    pass
+    if not isinstance(df, pd.DataFrame):
+        raise(ValueError)
+
+    if method != "iqr" and method != "zscore":
+        raise(TypeError)
+        
+    for c in df.columns:
+        if pd.api.types.is_numeric_dtype(df[c]) and (columns=="all" or c in columns):
+            if method == "iqr":
+                lower_q = df[c].quantile(0.25)
+                upper_q = df[c].quantile(0.75)
+                iqr = upper_q-lower_q
+                not_outliers = ((df[c] < upper_q+multiplier*iqr) & 
+                               (df[c] > lower_q-multiplier*iqr))
+                df = df[not_outliers]
+            elif method == "zscore":
+                mean = df[c].mean()
+                std = df[c].std()
+                not_outliers = (df[c] < (mean+multiplier*std) &
+                                df[c] > (mean-multiplier*std))
+                df = df[not_outliers]
+    return df

@@ -23,7 +23,7 @@ This project is a Python package that focuses on basic data cleaning and validat
     Checks whether a DataFrame follows an expected structure, such as having required columns, correct data types, and values within reasonable ranges. If something does not match, the function raises clear errors.
 
 -   `detect_outliers()`\
-    Identifies potential outliers in numeric columns using a simple rule-based approach and flags rows that may need further inspection.
+    Identifies potential outliers in numeric columns of a dataframe using a rule-based approach and returns a dataframe with removal of rows containing outliers.
 
 ### Relation to the Python ecosystem
 
