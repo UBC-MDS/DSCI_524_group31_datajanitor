@@ -16,9 +16,8 @@ def test_detect_outliers_iqr_logic():
     
     result = detect_outliers(df, multiplier=1.5, method="iqr")
     
-    assert len(result) == 4
-    assert 100 not in result['val'].values
     assert isinstance(result, pd.DataFrame)
+    assert result.equals(pd.DataFrame({'val': [11, 12, 13, 14]}))
 
 def test_detect_outliers_zscore_logic():
     """Test outlier detection using the Z-score method."""
@@ -26,8 +25,8 @@ def test_detect_outliers_zscore_logic():
     df = pd.DataFrame(data)
     
     result = detect_outliers(df, multiplier=3.0, method="zscore")
-    
-    assert 50 not in result['val'].values
+    assert isinstance(result, pd.DataFrame)
+    assert result.equals(pd.DataFrame({'val': [-9.5, 10.0, 10.5, 11.0]}))
 
 def test_detect_outliers_column_names():
     """Test that outlier detection can be targeted to specific columns or applied to all columns."""
@@ -37,12 +36,14 @@ def test_detect_outliers_column_names():
     
     # Check column A
     result = detect_outliers(df, columns = {"A"})
+    assert isinstance(result, pd.DataFrame)
     assert result.equals(df)
     
     # Check all columns
     result = detect_outliers(df, columns = "all")
-    assert len(result) == 4
-    assert 100 not in result['B'].values
+    assert isinstance(result, pd.DataFrame)
+    assert result.equals(pd.DataFrame({'A': [1, 2, 1, 2],
+                                       'B': [1, 2, 1, 2]}))
 
 def test_detect_outliers_invalid_df():
     """Test that providing a non-DataFrame input in df raises a TypeError."""
