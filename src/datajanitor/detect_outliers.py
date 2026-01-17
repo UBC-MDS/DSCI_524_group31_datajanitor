@@ -27,10 +27,10 @@ def detect_outliers(df, multiplier=1.5, method="iqr", columns="all"):
     Raises
     ------
     ValueError
-        If an unsupported method is provided.
+        If an unsupported method is provided, or a string other than "all" is provided in columns.
 
     TypeError
-        If the input df is not a pandas DataFrame.
+        If the input df is not a pandas DataFrame, or if the input columns is non-string and non-set.
 
     Notes
     -----
@@ -44,10 +44,10 @@ def detect_outliers(df, multiplier=1.5, method="iqr", columns="all"):
     >>> detect_outliers(data, multiplier=2.5, method="zscore")
     >>> detect_outliers(data, method="iqr", columns={"A","B"})
     """
-    if not isinstance(df, pd.DataFrame):
+    if not isinstance(df, pd.DataFrame) or not (isinstance(columns, str) or isinstance(columns, set)):
         raise(TypeError)
 
-    if method != "iqr" and method != "zscore":
+    if (method != "iqr" and method != "zscore") or (isinstance(columns, str) and columns != "all"):
         raise(ValueError)
         
     for c in df.columns:
