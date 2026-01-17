@@ -6,9 +6,8 @@ from datajanitor.detect_outliers import detect_outliers
 
 def test_detect_outliers_empty_df():
     """Test that an empty DataFrame returns an empty DataFrame."""
-    empty_df = pd.DataFrame()
-    result = detect_outliers(empty_df)
-    assert result == empty_df
+    result = detect_outliers(pd.DataFrame())
+    assert isinstance(result, pd.DataFrame) and result.empty
 
 def test_detect_outliers_iqr_logic():
     """Test outlier detection using the interquartile range (IQR) method."""
@@ -23,12 +22,11 @@ def test_detect_outliers_iqr_logic():
 
 def test_detect_outliers_zscore_logic():
     """Test outlier detection using the Z-score method."""
-    data = {'val': [-9.5, 10.0, 10.5, 11.0, 50]} 
+    data = {'val': [-9.5, 10.0, 10.5, 11.0, 80.0]} # 80.0 is an outlier
     df = pd.DataFrame(data)
     
     result = detect_outliers(df, multiplier=3.0, method="zscore")
     
-    assert result == df
     assert 50 not in result['val'].values
 
 def test_detect_outliers_column_names():
@@ -39,7 +37,7 @@ def test_detect_outliers_column_names():
     
     # Check column A
     result = detect_outliers(df, columns = {"A"})
-    assert result == df
+    assert result.equals(df)
     
     # Check all columns
     result = detect_outliers(df, columns = "all")

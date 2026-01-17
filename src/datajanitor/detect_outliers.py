@@ -1,3 +1,5 @@
+import pandas as pd
+
 def detect_outliers(df, multiplier=1.5, method="iqr", columns="all"):
     """
     Identifies potential outliers in numeric columns of a DataFrame using a rule-based approach 
@@ -42,10 +44,10 @@ def detect_outliers(df, multiplier=1.5, method="iqr", columns="all"):
     >>> detect_outliers(data, multiplier=2.5, method="zscore")
     """
     if not isinstance(df, pd.DataFrame):
-        raise(ValueError)
+        raise(TypeError)
 
     if method != "iqr" and method != "zscore":
-        raise(TypeError)
+        raise(ValueError)
         
     for c in df.columns:
         if pd.api.types.is_numeric_dtype(df[c]) and (columns=="all" or c in columns):
@@ -59,7 +61,7 @@ def detect_outliers(df, multiplier=1.5, method="iqr", columns="all"):
             elif method == "zscore":
                 mean = df[c].mean()
                 std = df[c].std()
-                not_outliers = (df[c] < (mean+multiplier*std) &
-                                df[c] > (mean-multiplier*std))
+                not_outliers = ((df[c] < mean+multiplier*std) &
+                                (df[c] > mean-multiplier*std))
                 df = df[not_outliers]
     return df
