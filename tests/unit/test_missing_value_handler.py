@@ -4,7 +4,7 @@ import pytest
 from datajanitor.missing_value_handler import missing_value_handler
 
 
-def test_missing_value_handler_edge_cases(data):
+def test_missing_value_handler_edge_cases():
     """
     Verify missing_value_handler raises correct errors
     and handles missing values properly.
