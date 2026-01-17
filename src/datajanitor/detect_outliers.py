@@ -44,11 +44,17 @@ def detect_outliers(df, multiplier=1.5, method="iqr", columns="all"):
     >>> detect_outliers(data, multiplier=2.5, method="zscore")
     >>> detect_outliers(data, method="iqr", columns={"A","B"})
     """
-    if not isinstance(df, pd.DataFrame) or not (isinstance(columns, str) or isinstance(columns, set)):
-        raise(TypeError)
+    if not isinstance(df, pd.DataFrame):
+        raise TypeError(f"Expected "df" to be a pandas DataFrame, but got {type(df).__name__}.")
 
-    if (method != "iqr" and method != "zscore") or (isinstance(columns, str) and columns != "all"):
-        raise(ValueError)
+    if not (isinstance(columns, str) or isinstance(columns, set)):
+        raise TypeError(f"Expected "columns" to be a string or a set, but got {type(columns).__name__}.")
+
+    if (method != "iqr" and method != "zscore"):
+        raise ValueError(f"Invalid method '{method}'. Supported methods are: {', '.join(["iqr","zscore"])}")
+
+    if isinstance(columns, str) and columns != "all":
+        raise ValueError(f"If "columns" is a string, it must be "all". Received: '{columns}'")
         
     for c in df.columns:
         if pd.api.types.is_numeric_dtype(df[c]) and (columns=="all" or c in columns):
