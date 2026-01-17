@@ -50,6 +50,18 @@ def test_detect_outliers_invalid_df():
     with pytest.raises(TypeError):
         detect_outliers([1, 2, 3, 100], method = "iqr")
 
+def test_detect_outliers_invalid_type_multplier():
+    """Test that providing a non-numeric multiplier raises a TypeError."""
+    df = pd.DataFrame({'val': [11, 12, 13, 14, 100]})
+    with pytest.raises(TypeError):
+        detect_outliers(df, multiplier = "three")
+
+def test_detect_outliers_invalid_value_multiplier():
+    """Test that providing a negative multiplier value raises a ValueError."""
+    df = pd.DataFrame({'val': [11, 12, 13, 14, 100]})
+    with pytest.raises(ValueError):
+        detect_outliers(df, multiplier = -1.0)
+
 def test_detect_outliers_invalid_type_columns():
     """Test that providing a non-set and non-string input in columns raises a TypeError."""
     df = pd.DataFrame({'val': [1, 2, 3]})
