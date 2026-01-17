@@ -2,8 +2,8 @@ import pandas as pd
 import pytest
 from datajanitor.validate_schema import validate_schema, SchemaValidationError
 
-# tests that an error is raised when the input data is not a pandas DataFrame
 def test_validate_schema_invalid_input_type():
+    """Tests that an error is raised when the input data is not a pandas DataFrame."""
     data = {
         "customer": ["Sam", "Jenny"],
         "age": [20, 30]
@@ -15,8 +15,8 @@ def test_validate_schema_invalid_input_type():
     
     assert "must be a pandas DataFrame" in str(exc_info.value)
 
-# tests that there are no errors when the data conforms to the schema
 def test_validate_schema_valid_data():
+    """Tests that there are no errors when the data conforms to the schema."""
     data = pd.DataFrame({
         "customer": ["Sam", "Jenny", "Mike"],
         "age": [20, 30, 40],
@@ -32,8 +32,8 @@ def test_validate_schema_valid_data():
     result = validate_schema(data, schema)
     assert result is None
 
-# tests that an error is raised when a column is missing from the data
 def test_validate_schema_missing_columns():
+    """Tests that an error is raised when a column is missing from the data."""
     data = pd.DataFrame({
         "customer": ["Sam", "Jenny", "Mike"],
         "age": [20, 30, 40],
@@ -67,8 +67,8 @@ def test_validate_schema_missing_columns():
         "name": "Required Column 'name' not found in data",
     }
 
-# tests that an error is raised when a column has the wrong data type
 def test_validate_schema_wrong_data_type():
+    """Tests that a SchemaValidationError is raised when a column in data has the wrong data type."""
     data = pd.DataFrame({
         "customer": ["Sam", "Jenny", "Mike"],
         "age": [20, 30, 40],
@@ -88,8 +88,8 @@ def test_validate_schema_wrong_data_type():
         "purchase_amount": "Column 'purchase_amount' has incorrect type. Expected int, got object."
     }
 
-# tests that there are no errors when the data is empty
 def test_validate_schema_empty_dataframe():
+    """Tests that there are no errors when the input DataFrame is empty."""
     data = pd.DataFrame(columns=["customer", "age"])
     schema = {
         "customer": {"type": "str"},
@@ -99,8 +99,8 @@ def test_validate_schema_empty_dataframe():
     result = validate_schema(data, schema)
     assert result is None
 
-# tests that there are no errors when there are extra columns in the data
 def test_validate_schema_extra_columns():
+    """Tests that there are no errors when there are extra columns in the input DataFrame."""
     data = pd.DataFrame({
         "customer": ["Sam"],
         "age": [20],
@@ -117,8 +117,8 @@ def test_validate_schema_extra_columns():
     result = validate_schema(data, schema)
     assert result is None  
 
-# tests that an error is raised when a column has missing values
 def test_validate_schema_missing_values():
+    """Tests that an error is raised when a column in data has missing values."""
     data = pd.DataFrame({
         "customer": ["Sam", None],
         "age": [20, 30],
@@ -136,8 +136,8 @@ def test_validate_schema_missing_values():
         "customer": "Column 'customer' contains missing values."
     }
 
-# tests that an error is raised when a numeric column has values outside the min and max bounds
 def test_validate_schema_numeric_bounds():
+    """Tests that a SchemaValidationError is raised when a numeric column has values outside the min and max bounds."""
     data = pd.DataFrame({
         "age": [-5, 20, 30],
     })
@@ -167,8 +167,8 @@ def test_validate_schema_numeric_bounds():
     data = pd.DataFrame({"age": [5, 130]})
     schema = {"age": {"type": "int", "max": 130}}
 
-# tests that an error is raised when the schema is not a dictionary
 def test_validate_schema_invalid_schema_type():
+    """Tests that an error is raised when the schema is not a dictionary."""
     data = pd.DataFrame({"a": [1, 2]})
     schema = [1,2]
 
@@ -181,8 +181,8 @@ def test_validate_schema_invalid_schema_type():
     with pytest.raises(TypeError):
         validate_schema(data, schema)
 
-# tests that there are no errors when an optional column is not present in the data.
 def test_validate_schema_optional_column_not_required():
+    """Tests that there are no errors when an optional column is not present in the input DataFrame."""
     data = pd.DataFrame({"age": [20, 30]})
     schema = {
         "age": {"type": "int"},
