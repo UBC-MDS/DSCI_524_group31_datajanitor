@@ -20,7 +20,7 @@ def validate_schema(data, schema):
     Validate a dataset against a predefined schema.
 
     This function checks whether a dataset conforms to an expected schema by
-    validating column presence, data types, and optional value constraints
+    validating column presence, data types, missing valuesand optional value constraints
     such as numeric ranges. It is designed to provide clear, human-readable
     error messages when schema violations are detected.
 
@@ -99,6 +99,13 @@ def validate_schema(data, schema):
         if column not in data.columns:
             continue
 
+        if spec.get("required", True) and data[column].isnull().any():
+                errors[column] = f"Column '{column}' contains missing values."
+                continue
+            
+        if len(data[column]) == 0:
+            continue
+
         expected_type = spec.get("type")
         if expected_type is not None:
             actual_dtype = str(data[column].dtype)
@@ -106,6 +113,17 @@ def validate_schema(data, schema):
 
             if expected_dtypes and not any(t in actual_dtype for t in expected_dtypes):
                 errors[column] = f"Column '{column}' has incorrect type. Expected {expected_type}, got {actual_dtype}."
+
+        min_val = spec.get("min")
+        max_val = spec.get("max")
+        if pd.api.types.is_numeric_dtype(data[column]):
+            out_of_bounds = False
+            if min_val is not None and (data[column] < min_val).any():
+                out_of_bounds = True
+            if max_val is not None and (data[column] > max_val).any():
+                out_of_bounds = True
+            if out_of_bounds:
+                errors[column] = f"Values in '{column}' must be between {min_val} and {max_val}."
 
     if errors:
         raise SchemaValidationError(errors)

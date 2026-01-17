@@ -73,3 +73,66 @@ def test_validate_schema_wrong_data_type():
         "purchase_amount": "Column 'purchase_amount' has incorrect type. Expected int, got object."
     }
 
+# tests that there are no errors when the data is empty
+def test_validate_schema_empty_dataframe():
+    data = pd.DataFrame(columns=["customer", "age"])
+    schema = {
+        "customer": {"type": "str"},
+        "age": {"type": "int"}
+    }
+
+    result = validate_schema(data, schema)
+    assert result is None
+
+# tests that there are no errors when there are extra columns in the data
+def test_validate_schema_extra_columns():
+    data = pd.DataFrame({
+        "customer": ["Sam"],
+        "age": [20],
+        "purchase_amount": [1000],
+        "extra_col": ["unexpected"]
+    })
+
+    schema = {
+        "customer": {"type": "str"},
+        "age": {"type": "int"},
+        "purchase_amount": {"type": "int"},
+    }
+
+    result = validate_schema(data, schema)
+    assert result is None  
+
+# tests that an error is raised when a column has missing values
+def test_validate_schema_missing_values():
+    data = pd.DataFrame({
+        "customer": ["Sam", None],
+        "age": [20, 30],
+    })
+
+    schema = {
+        "customer": {"type": "str"},
+        "age": {"type": "int"},
+    }
+
+    with pytest.raises(SchemaValidationError) as excinfo:
+        validate_schema(data, schema)
+
+    assert excinfo.value.errors == {
+        "customer": "Column 'customer' contains missing values."
+    }
+
+def test_validate_schema_numeric_bounds():
+    data = pd.DataFrame({
+        "age": [-5, 20, 30],
+    })
+
+    schema = {
+        "age": {"type": "int", "min": 5, "max": 100}
+    }
+
+    with pytest.raises(SchemaValidationError) as excinfo:
+        validate_schema(data, schema)
+
+    assert excinfo.value.errors == {
+        "age": "Values in 'age' must be between 5 and 100."
+    }
