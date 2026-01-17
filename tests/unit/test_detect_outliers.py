@@ -44,14 +44,25 @@ def test_detect_outliers_column_names():
     assert len(result) == 4
     assert 100 not in result['B'].values
 
-def test_detect_outliers_invalid_type():
+def test_detect_outliers_invalid_df():
     """Test that providing a non-DataFrame input in df raises a TypeError."""
     with pytest.raises(TypeError):
         detect_outliers([1, 2, 3, 100], method = "iqr")
 
+def test_detect_outliers_invalid_type_columns():
+    """Test that providing a non-set and non-string input in columns raises a TypeError."""
+    df = pd.DataFrame({'val': [1, 2, 3]})
+    with pytest.raises(TypeError):
+        detect_outliers(df, columns=1)
+
+def test_detect_outliers_invalid_value_columns():
+    """Test that providing a string other than "all" in columns raises a ValueError."""
+    df = pd.DataFrame({'val': [1, 2, 3]})
+    with pytest.raises(ValueError):
+        detect_outliers(df, columns="none")
+
 def test_detect_outliers_invalid_method():
     """Test that providing an invalid method raises a ValueError."""
     df = pd.DataFrame({'val': [1, 2, 3]})
-    
     with pytest.raises(ValueError):
          detect_outliers(df, method = "random_guess")
