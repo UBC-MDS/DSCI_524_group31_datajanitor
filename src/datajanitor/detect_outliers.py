@@ -48,7 +48,7 @@ def detect_outliers(df, multiplier=1.5, method="iqr", columns="all"):
         raise TypeError(f"Expected "df" to be a pandas DataFrame, but got {type(df).__name__}.")
 
     if not (isinstance(columns, str) or isinstance(columns, set)):
-        raise TypeError(f"Expected "columns" to be a string or a set, but got {type(columns).__name__}.")
+        raise TypeError(f"Expected "columns" to be a set or "all", but got {type(columns).__name__}.")
 
     if (method != "iqr" and method != "zscore"):
         raise ValueError(f"Invalid method '{method}'. Supported methods are: {', '.join(["iqr","zscore"])}")
