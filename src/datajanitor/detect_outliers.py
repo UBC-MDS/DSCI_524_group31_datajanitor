@@ -22,7 +22,7 @@ def detect_outliers(df, multiplier=1.5, method="iqr", columns="all"):
     
     Returns
     -------
-    A new pandas DataFrame with the identified outlier rows removed according to the specified method and the multiplier.
+    A new pandas DataFrame with the identified outlier rows removed according to the specified method, multiplier, and the specified columns.
 
     Raises
     ------
@@ -46,6 +46,12 @@ def detect_outliers(df, multiplier=1.5, method="iqr", columns="all"):
     """
     if not isinstance(df, pd.DataFrame):
         raise TypeError(f"Expected 'df' to be a pandas DataFrame, but got {type(df).__name__}.")
+
+    if not isinstance(multiplier, (int, float)):
+        raise TypeError(f"Expected 'multiplier' to be numeric, but got {type(multiplier).__name__}.")
+
+    if multiplier <= 0:
+        raise ValueError(f"Expected 'multiplier' to be positive, but got {multiplier}.")
 
     if not (isinstance(columns, str) or isinstance(columns, set)):
         raise TypeError(f"Expected 'columns' to be a set or 'all', but got {type(columns).__name__}.")
