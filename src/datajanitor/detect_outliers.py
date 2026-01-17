@@ -42,6 +42,7 @@ def detect_outliers(df, multiplier=1.5, method="iqr", columns="all"):
     >>> detect_outliers(data, method="zscore")
     >>> detect_outliers(data, multiplier=3.0)
     >>> detect_outliers(data, multiplier=2.5, method="zscore")
+    >>> detect_outliers(data, method="iqr", columns={"A","B"})
     """
     if not isinstance(df, pd.DataFrame):
         raise(TypeError)
