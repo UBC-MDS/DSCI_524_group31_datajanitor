@@ -1,3 +1,5 @@
+import pandas as pd
+
 def detect_outliers(df, multiplier=1.5, method="iqr", columns="all"):
     """
     Identifies potential outliers in numeric columns of a DataFrame using a rule-based approach 
@@ -20,15 +22,15 @@ def detect_outliers(df, multiplier=1.5, method="iqr", columns="all"):
     
     Returns
     -------
-    A new pandas DataFrame with the identified outlier rows removed according to the specified method and the multiplier.
+    A new pandas DataFrame with the identified outlier rows removed according to the specified method, multiplier, and the specified columns.
 
     Raises
     ------
     ValueError
-        If an unsupported method is provided.
+        If an unsupported method is provided, or a string other than "all" is provided in columns.
 
     TypeError
-        If the input df is not a pandas DataFrame.
+        If the input df is not a pandas DataFrame, or if the input columns is non-string and non-set.
 
     Notes
     -----
@@ -40,12 +42,25 @@ def detect_outliers(df, multiplier=1.5, method="iqr", columns="all"):
     >>> detect_outliers(data, method="zscore")
     >>> detect_outliers(data, multiplier=3.0)
     >>> detect_outliers(data, multiplier=2.5, method="zscore")
+    >>> detect_outliers(data, method="iqr", columns={"A","B"})
     """
     if not isinstance(df, pd.DataFrame):
-        raise(ValueError)
+        raise TypeError(f"Expected 'df' to be a pandas DataFrame, but got {type(df).__name__}.")
 
-    if method != "iqr" and method != "zscore":
-        raise(TypeError)
+    if not isinstance(multiplier, (int, float)):
+        raise TypeError(f"Expected 'multiplier' to be numeric, but got {type(multiplier).__name__}.")
+
+    if multiplier <= 0:
+        raise ValueError(f"Expected 'multiplier' to be positive, but got {multiplier}.")
+
+    if not (isinstance(columns, str) or isinstance(columns, set)):
+        raise TypeError(f"Expected 'columns' to be a set or 'all', but got {type(columns).__name__}.")
+
+    if (method != "iqr" and method != "zscore"):
+        raise ValueError(f"Invalid method '{method}'. Supported methods are: {', '.join(["iqr","zscore"])}")
+
+    if isinstance(columns, str) and columns != "all":
+        raise ValueError(f"If 'columns' is a string, it must be 'all'. Received: '{columns}'")
         
     for c in df.columns:
         if pd.api.types.is_numeric_dtype(df[c]) and (columns=="all" or c in columns):
@@ -59,7 +74,7 @@ def detect_outliers(df, multiplier=1.5, method="iqr", columns="all"):
             elif method == "zscore":
                 mean = df[c].mean()
                 std = df[c].std()
-                not_outliers = (df[c] < (mean+multiplier*std) &
-                                df[c] > (mean-multiplier*std))
+                not_outliers = ((df[c] < mean+multiplier*std) &
+                                (df[c] > mean-multiplier*std))
                 df = df[not_outliers]
     return df

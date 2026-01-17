@@ -6,9 +6,8 @@ from datajanitor.detect_outliers import detect_outliers
 
 def test_detect_outliers_empty_df():
     """Test that an empty DataFrame returns an empty DataFrame."""
-    empty_df = pd.DataFrame()
-    result = detect_outliers(empty_df)
-    assert result == empty_df
+    result = detect_outliers(pd.DataFrame())
+    assert isinstance(result, pd.DataFrame) and result.empty
 
 def test_detect_outliers_iqr_logic():
     """Test outlier detection using the interquartile range (IQR) method."""
@@ -17,19 +16,17 @@ def test_detect_outliers_iqr_logic():
     
     result = detect_outliers(df, multiplier=1.5, method="iqr")
     
-    assert len(result) == 4
-    assert 100 not in result['val'].values
     assert isinstance(result, pd.DataFrame)
+    assert result.equals(pd.DataFrame({'val': [11, 12, 13, 14]}))
 
 def test_detect_outliers_zscore_logic():
     """Test outlier detection using the Z-score method."""
-    data = {'val': [-9.5, 10.0, 10.5, 11.0, 50]} 
+    data = {'val': [-9.5, 10.0, 10.5, 11.0, 200.0]} # 200.0 is an outlier
     df = pd.DataFrame(data)
     
-    result = detect_outliers(df, multiplier=3.0, method="zscore")
-    
-    assert result == df
-    assert 50 not in result['val'].values
+    result = detect_outliers(df, multiplier=1.5, method="zscore")
+    assert isinstance(result, pd.DataFrame)
+    assert result.equals(pd.DataFrame({'val': [-9.5, 10.0, 10.5, 11.0]}))
 
 def test_detect_outliers_column_names():
     """Test that outlier detection can be targeted to specific columns or applied to all columns."""
@@ -39,21 +36,46 @@ def test_detect_outliers_column_names():
     
     # Check column A
     result = detect_outliers(df, columns = {"A"})
-    assert result == df
+    assert isinstance(result, pd.DataFrame)
+    assert result.equals(df)
     
     # Check all columns
     result = detect_outliers(df, columns = "all")
-    assert len(result) == 4
-    assert 100 not in result['B'].values
+    assert isinstance(result, pd.DataFrame)
+    assert result.equals(pd.DataFrame({'A': [1, 2, 1, 2],
+                                       'B': [1, 2, 1, 2]}))
 
-def test_detect_outliers_invalid_type():
+def test_detect_outliers_invalid_df():
     """Test that providing a non-DataFrame input in df raises a TypeError."""
     with pytest.raises(TypeError):
         detect_outliers([1, 2, 3, 100], method = "iqr")
 
+def test_detect_outliers_invalid_type_multplier():
+    """Test that providing a non-numeric multiplier raises a TypeError."""
+    df = pd.DataFrame({'val': [11, 12, 13, 14, 100]})
+    with pytest.raises(TypeError):
+        detect_outliers(df, multiplier = "three")
+
+def test_detect_outliers_invalid_value_multiplier():
+    """Test that providing a negative multiplier value raises a ValueError."""
+    df = pd.DataFrame({'val': [11, 12, 13, 14, 100]})
+    with pytest.raises(ValueError):
+        detect_outliers(df, multiplier = -1.0)
+
+def test_detect_outliers_invalid_type_columns():
+    """Test that providing a non-set and non-string input in columns raises a TypeError."""
+    df = pd.DataFrame({'val': [1, 2, 3]})
+    with pytest.raises(TypeError):
+        detect_outliers(df, columns=1)
+
+def test_detect_outliers_invalid_value_columns():
+    """Test that providing a string other than "all" in columns raises a ValueError."""
+    df = pd.DataFrame({'val': [1, 2, 3]})
+    with pytest.raises(ValueError):
+        detect_outliers(df, columns="none")
+
 def test_detect_outliers_invalid_method():
     """Test that providing an invalid method raises a ValueError."""
     df = pd.DataFrame({'val': [1, 2, 3]})
-    
     with pytest.raises(ValueError):
          detect_outliers(df, method = "random_guess")
