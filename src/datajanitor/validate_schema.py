@@ -20,7 +20,7 @@ def validate_schema(data, schema):
     Validate a dataset against a predefined schema.
 
     This function checks whether a dataset conforms to an expected schema by
-    validating column presence, data types, missing valuesand optional value constraints
+    validating column presence, data types, missing values and optional value constraints
     such as numeric ranges. It is designed to provide clear, human-readable
     error messages when schema violations are detected.
 

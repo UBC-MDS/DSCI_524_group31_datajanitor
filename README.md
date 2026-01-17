@@ -25,6 +25,11 @@ This project is a Python package that focuses on basic data cleaning and validat
 -   `detect_outliers()`\
     Identifies potential outliers in numeric columns using a simple rule-based approach and flags rows that may need further inspection.
 
+### Test Files
+-   `test_validate_schema.py`\
+    This file contains various tests that check validate_schema() functionality. Testing includes verifying error ouput, missing value/column checks, numerical out of bounds validation as well as various other use case instances. 
+
+
 ### Relation to the Python ecosystem
 
 Some existing Python packages provide similar functionality. For example, `pandera` allows users to define and validate schemas for pandas DataFrames. Outlier detection methods are also available in `scikit-learn`, which includes more advanced algorithms.\
