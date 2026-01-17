@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import pytest
-from datajanitor import missing_value_handler
+from datajanitor.missing_value_handler import missing_value_handler
 
 
 def test_missing_value_handler_edge_cases(data):
