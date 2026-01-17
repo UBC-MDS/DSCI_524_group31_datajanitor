@@ -43,13 +43,6 @@ You can install this package into your preferred Python environment using pip:
 $ pip install datajanitor
 ```
 
-To use datajanitor in your code:
-
-``` python
->>> import datajanitor
->>> datajanitor.hello_world()
-```
-
 ## Contributors
 
 Group 31: Karan Partap Bains, Yasaman Eftekharypour, Sameel Syed, Yuting Ji
