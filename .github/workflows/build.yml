@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  unit-test-pytest:
+  build:
     runs-on: ubuntu-latest
 
     steps:
