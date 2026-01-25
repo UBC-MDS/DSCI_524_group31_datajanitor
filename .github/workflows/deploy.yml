@@ -2,6 +2,7 @@ name: deploy-test-pypi
 
 on:
   push:
+    branches: [main]
   pull_request:
     branches: [main]
   #tags: [ "v*.*.*" ]
