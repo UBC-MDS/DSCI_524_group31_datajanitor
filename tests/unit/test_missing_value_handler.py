@@ -55,3 +55,23 @@ def test_missing_value_handler_drop_method():
     assert len(result) == 1
     assert result.iloc[0]["A"] == 1
     assert result.iloc[0]["B"] == 4
+    
+
+def test_missing_value_handler_mean_numeric_only():
+    """
+    Test that the mean imputation method only fills missing values
+    in numeric columns and does not affect non-numeric columns.
+
+    This test verifies that:
+    - NaN values in numeric columns are replaced with the column mean.
+    - Non-numeric columns remain unchanged when using the 'mean' method.
+    """
+    df = pd.DataFrame({
+        "A": [1.0, 2.0, np.nan],
+        "B": ["x", None, "y"]
+    })
+
+    result = missing_value_handler(df, method="mean")
+
+    assert result.loc[2, "A"] == 1.5
+    assert result["B"].isna().sum() == 1
