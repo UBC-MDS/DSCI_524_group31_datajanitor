@@ -34,3 +34,24 @@ def test_missing_value_handler_edge_cases():
     with pytest.raises(ValueError):
         missing_value_handler(df, method=123)
     
+    
+def test_missing_value_handler_drop_method():
+    """
+    Test that the 'drop' method removes all rows
+    containing at least one missing value.
+
+    This test ensures that:
+    - Rows with any NaN values are completely removed.
+    - Only rows with no missing values remain in the result
+    """
+    df = pd.DataFrame({
+        "A": [1, np.nan, 3],
+        "B": [4, 5, np.nan]
+    })
+
+    result = missing_value_handler(df, method="drop")
+
+    # Only the first row has no missing values
+    assert len(result) == 1
+    assert result.iloc[0]["A"] == 1
+    assert result.iloc[0]["B"] == 4
