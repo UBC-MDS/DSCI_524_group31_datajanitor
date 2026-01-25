@@ -91,7 +91,7 @@ pytest
 
 ### Build documentation
 
-Documentation is built using quartodoc.
+Documentation is built using Quarto with quartodoc for automatic API generation.
 
 To build the documentation locally:
 
