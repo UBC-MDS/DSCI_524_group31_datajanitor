@@ -111,6 +111,20 @@ Documentation deployment is automated using GitHub Actions.
 
 On pushes to the deployment branch (typically main), the documentation workflow builds the site and publishes it to GitHub Pages automatically.
 
+## Example usage
+
+Below is a simple example demonstrating how to use one of the package functions.
+
+```python
+import pandas as pd
+from datajanitor.standard_columns import standardize_columns
+
+df = pd.DataFrame({" First Name ": [1], "AGE": [20]})
+out = standardize_columns(df)
+
+out.columns.tolist()
+```
+
 ## Contributors
 
 Group 31: Karan Partap Bains, Yasaman Eftekharypour, Sameel Syed, Yuting Ji
