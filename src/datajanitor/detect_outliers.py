@@ -74,7 +74,7 @@ def detect_outliers(df, multiplier=1.5, method="iqr", columns="all"):
                 not_outliers = ((df[c] < upper_q+multiplier*iqr) & 
                                (df[c] > lower_q-multiplier*iqr))
                 df = df[not_outliers]
-            elif method == "zscore":
+            else:
                 mean = df[c].mean()
                 std = df[c].std()
                 not_outliers = ((df[c] < mean+multiplier*std) &
