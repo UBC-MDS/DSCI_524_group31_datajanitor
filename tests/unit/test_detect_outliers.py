@@ -79,3 +79,12 @@ def test_detect_outliers_invalid_method():
     df = pd.DataFrame({'val': [1, 2, 3]})
     with pytest.raises(ValueError):
          detect_outliers(df, method = "random_guess")
+        
+def test_detect_outliers_columns_empty_set():
+    """
+    Test that passing an empty set for 'columns' raises a ValueError.
+    """
+    df = pd.DataFrame({'A': [1, 2, 3], 'B': [4, 5, 6]})
+    
+    with pytest.raises(ValueError):
+        detect_outliers(df, columns=set())
