@@ -26,9 +26,9 @@ This project is a Python package that focuses on basic data cleaning and validat
     Identifies potential outliers in numeric columns of a dataframe using a rule-based approach and returns a dataframe with removal of rows containing outliers.
 
 ### Test Files
--   `test_validate_schema.py`\
-    This file contains various tests that check validate_schema() functionality. Testing includes verifying error ouput, missing value/column checks, numerical out of bounds validation as well as various other use case instances. 
 
+-   `test_validate_schema.py`\
+    This file contains various tests that check validate_schema() functionality. Testing includes verifying error ouput, missing value/column checks, numerical out of bounds validation as well as various other use case instances.
 
 ### Relation to the Python ecosystem
 
@@ -41,6 +41,19 @@ You can install this package into your preferred Python environment using pip:
 
 ``` bash
 $ pip install datajanitor
+```
+
+## Development and Documentation Guide
+
+This section provides instructions for collaborators (including instructors and TAs) on how to set up the development environment, install the package, run tests, and build and deploy documentation.
+
+### Clone the repository
+
+Clone the repository and move into the project directory:
+
+``` bash
+$ git clone <https://github.com/UBC-MDS/DSCI_524_group31_datajanitor.git> 
+$ cd DSCI_524_group31_datajanitor
 ```
 
 ## Contributors
