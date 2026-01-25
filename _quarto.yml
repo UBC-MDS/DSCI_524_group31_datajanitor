@@ -21,7 +21,7 @@ quartodoc:
     - title: Data Janitor
       desc: Functions to help you clean and validate your data.
       contents:
-        - datajanitor.validate_schema
-        - datajanitor.missing_value_handler
-        - datajanitor.standardize_columns
-        - datajanitor.detect_outliers
+        - validate_schema
+        - missing_value_handler
+        - standard_columns
+        - detect_outliers
