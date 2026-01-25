@@ -1,7 +1,7 @@
 # Welcome to datajanitor
 
 |  |  |
-|------------------------------------|------------------------------------|
+|----|----|
 | Package | [![Latest PyPI Version](https://img.shields.io/pypi/v/datajanitor.svg)](https://pypi.org/project/datajanitor/) [![Supported Python Versions](https://img.shields.io/pypi/pyversions/datajanitor.svg)](https://pypi.org/project/datajanitor/) |
 | Meta | [![Code of Conduct](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md) |
 
@@ -26,6 +26,7 @@ This project is a Python package that focuses on basic data cleaning and validat
     Identifies potential outliers in numeric columns of a dataframe using a rule-based approach and returns a dataframe with removal of rows containing outliers.
 
 ### Test Files
+
 -   `test_detect_outliers.py`\
     This file contains various tests that check detect_outliers() functionality. Testing includes verifying outlier removal using IQR and Z-score methods, column selection behavior, and error handling for invalid inputs and parameters.
 
@@ -115,7 +116,7 @@ On pushes to the deployment branch (typically main), the documentation workflow 
 
 Below is a simple example demonstrating how to use one of the package functions.
 
-```python
+``` python
 import pandas as pd
 from datajanitor.standard_columns import standardize_columns
 
