@@ -1,7 +1,7 @@
 # Welcome to datajanitor
 
 |  |  |
-|------------------------------------|------------------------------------|
+|----|----|
 | Package | [![Latest PyPI Version](https://img.shields.io/pypi/v/datajanitor.svg)](https://pypi.org/project/datajanitor/) [![Supported Python Versions](https://img.shields.io/pypi/pyversions/datajanitor.svg)](https://pypi.org/project/datajanitor/) |
 | Meta | [![Code of Conduct](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md) |
 
@@ -26,9 +26,18 @@ This project is a Python package that focuses on basic data cleaning and validat
     Identifies potential outliers in numeric columns of a dataframe using a rule-based approach and returns a dataframe with removal of rows containing outliers.
 
 ### Test Files
--   `test_validate_schema.py`\
-    This file contains various tests that check validate_schema() functionality. Testing includes verifying error ouput, missing value/column checks, numerical out of bounds validation as well as various other use case instances. 
 
+-   `test_detect_outliers.py`\
+    This file contains various tests that check detect_outliers() functionality. Testing includes verifying outlier removal using IQR and Z-score methods, column selection behavior, and error handling for invalid inputs and parameters.
+
+-   `test_missing_value_handler.py`\
+    This file contains various tests that check missing_value_handler() functionality. Testing includes verifying correct handling of missing values, unsupported methods, and edge cases such as empty DataFrames and columns with all missing values.
+
+-   `test_standard_columns.py`\
+    This file contains various tests that check standardize_columns() functionality. Testing includes verifying correct column name cleaning behavior, handling of edge cases, and proper error raising for invalid inputs.
+
+-   `test_validate_schema.py`\
+    This file contains various tests that check validate_schema() functionality. Testing includes verifying error output, missing value/column checks, numerical out of bounds validation as well as various other use case instances.
 
 ### Relation to the Python ecosystem
 
@@ -41,6 +50,80 @@ You can install this package into your preferred Python environment using pip:
 
 ``` bash
 $ pip install datajanitor
+```
+
+## Development and Documentation Guide
+
+This section provides instructions for collaborators on how to set up the development environment, install the package, run tests, and build and deploy documentation.
+
+### Clone the repository
+
+Clone the repository and move into the project directory:
+
+``` bash
+$ git clone <https://github.com/UBC-MDS/DSCI_524_group31_datajanitor.git> 
+$ cd DSCI_524_group31_datajanitor
+```
+
+### Set up the development environment
+
+The development environment is defined in `environment.yml`.
+
+``` bash
+conda env create -f environment.yml
+conda activate datajanitor
+```
+
+### Install the package
+
+Install the package in editable mode from the repository root:
+
+``` bash
+pip install -e .
+```
+
+### Run tests
+
+Run the full test suite using pytest:
+
+``` bash
+pytest
+```
+
+### Build documentation
+
+Documentation is built using Quarto with quartodoc for automatic API generation.
+
+To build the documentation locally:
+
+``` bash
+quarto render
+```
+
+To preview the documentation:
+
+``` bash
+quarto preview
+```
+
+### Deploy documentation (automated)
+
+Documentation is built using Quarto with quartodoc for automatic API generation.
+
+On pushes to the deployment branch (typically main), the documentation workflow builds the site and publishes it to GitHub Pages automatically.
+
+## Example usage
+
+Below is a simple example demonstrating how to use one of the package functions.
+
+``` python
+import pandas as pd
+from datajanitor.standard_columns import standardize_columns
+
+df = pd.DataFrame({" First Name ": [1], "AGE": [20]})
+out = standardize_columns(df)
+
+out.columns.tolist()
 ```
 
 ## Contributors
