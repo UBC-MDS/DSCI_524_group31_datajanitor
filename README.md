@@ -32,11 +32,11 @@ This project is a Python package that focuses on basic data cleaning and validat
 -   `test_missing_value_handler.py`\
     This file contains various tests that check missing_value_handler() functionality. Testing includes verifying correct handling of missing values, unsupported methods, and edge cases such as empty DataFrames and columns with all missing values.
 
--   `test_validate_schema.py`\
+-   `test_standard_columns.py`\
     This file contains various tests that check standardize_columns() functionality. Testing includes verifying correct column name cleaning behavior, handling of edge cases, and proper error raising for invalid inputs.
 
 -   `test_validate_schema.py`\
-    This file contains various tests that check validate_schema() functionality. Testing includes verifying error ouput, missing value/column checks, numerical out of bounds validation as well as various other use case instances.
+    This file contains various tests that check validate_schema() functionality. Testing includes verifying error output, missing value/column checks, numerical out of bounds validation as well as various other use case instances.
 
 ### Relation to the Python ecosystem
 
@@ -107,7 +107,7 @@ quarto preview
 
 ### Deploy documentation (automated)
 
-Documentation deployment is automated using GitHub Actions.
+Documentation is built using Quarto with quartodoc for automatic API generation.
 
 On pushes to the deployment branch (typically main), the documentation workflow builds the site and publishes it to GitHub Pages automatically.
 
