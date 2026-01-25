@@ -1,0 +1,27 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Data Janitor"
+  navbar:
+    left:
+      - text: "Reference"
+        href: reference/index.qmd
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+
+quartodoc:
+  package: datajanitor  
+  dir: reference
+  sections:
+    - title: Data Janitor
+      desc: Functions to help you clean and validate your data.
+      contents:
+        - datajanitor.validate_schema
+        - datajanitor.missing_value_handler
+        - datajanitor.standardize_columns
+        - datajanitor.detect_outliers

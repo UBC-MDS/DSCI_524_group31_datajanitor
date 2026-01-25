@@ -85,7 +85,7 @@ def test_validate_schema_wrong_data_type():
         validate_schema(data, schema)
 
     assert excinfo.value.errors == {
-        "purchase_amount": "Column 'purchase_amount' has incorrect type. Expected int, got object."
+        "purchase_amount": "Column 'purchase_amount' has incorrect type. Expected int, got str."
     }
 
 def test_validate_schema_empty_dataframe():

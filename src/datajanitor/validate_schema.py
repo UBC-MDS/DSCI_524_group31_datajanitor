@@ -85,7 +85,7 @@ def validate_schema(data, schema):
     type_mapping = {
             "int": ["int", "Int64", "int8", "int16", "int32", "int64", "uint8", "uint16", "uint32", "uint64"],
             "float": ["float", "Float64", "float32", "float64", "float16", "float128", "float256"],
-            "str": ["object", "string"],
+            "str": ["object", "string", "str"],
             "bool": ["bool", "boolean"],
             "object": ["object"],
         }
