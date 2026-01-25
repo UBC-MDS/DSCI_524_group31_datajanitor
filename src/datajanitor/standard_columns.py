@@ -33,6 +33,12 @@ TypeError
     If the input is not a pandas DataFrame.
 ValueError
     If standardization results in duplicate column names.
+
+Examples
+    --------
+    df = pd.DataFrame(columns=[" First Name ", "AGE"])
+    standardize_columns(df).columns.tolist()
+    ['first_name', 'age']
 """
     if not isinstance(df, pd.DataFrame):
         raise TypeError(

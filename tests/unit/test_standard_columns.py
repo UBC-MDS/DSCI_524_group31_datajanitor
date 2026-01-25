@@ -103,3 +103,14 @@ def test_standardize_columns_single_column_dataframe():
 
     assert out.columns.tolist() == ["single_column"]
     assert out is not df
+
+def test_standardize_columns_preserves_non_whitespace_characters():
+    """
+    Column names may contain punctuation or symbols.
+    The function should not remove them, only normalize whitespace
+    and casing according to the specification.
+    """
+    df = pd.DataFrame({"Total-Cost ($)": [100], " Net% Profit ": [20]})
+    out = standardize_columns(df)
+
+    assert out.columns.tolist() == ["total-cost_($)", "net%_profit"]
