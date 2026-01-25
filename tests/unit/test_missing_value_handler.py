@@ -75,3 +75,15 @@ def test_missing_value_handler_mean_numeric_only():
 
     assert result.loc[2, "A"] == 1.5
     assert result["B"].isna().sum() == 1
+    
+    
+def test_missing_value_handler_median():
+    """
+    Test that median imputation correctly fills missing
+    values in numeric columns.
+    """
+    df = pd.DataFrame({"A": [1, 3, np.nan]})
+
+    result = missing_value_handler(df, method="median")
+
+    assert result.loc[2, "A"] == 2
