@@ -61,6 +61,9 @@ def detect_outliers(df, multiplier=1.5, method="iqr", columns="all"):
 
     if isinstance(columns, str) and columns != "all":
         raise ValueError(f"If 'columns' is a string, it must be 'all'. Received: '{columns}'")
+
+    if isinstance(columns, set) and len(columns) == 0:
+        raise ValueError("The 'columns' argument cannot be an empty set.")
         
     for c in df.columns:
         if pd.api.types.is_numeric_dtype(df[c]) and (columns=="all" or c in columns):
