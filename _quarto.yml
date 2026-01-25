@@ -23,5 +23,5 @@ quartodoc:
       contents:
         - validate_schema
         - missing_value_handler
-        - standardize_columns
+        - standard_columns
         - detect_outliers
