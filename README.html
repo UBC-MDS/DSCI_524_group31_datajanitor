@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>code_of_conduct – Data Janitor</title>
+<title>readme – Data Janitor</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -109,21 +144,28 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#contributor-covenant-code-of-conduct" id="toc-contributor-covenant-code-of-conduct" class="nav-link active" data-scroll-target="#contributor-covenant-code-of-conduct">Contributor Covenant Code of Conduct</a>
+  <li><a href="#welcome-to-datajanitor" id="toc-welcome-to-datajanitor" class="nav-link active" data-scroll-target="#welcome-to-datajanitor">Welcome to datajanitor</a>
   <ul class="collapse">
-  <li><a href="#our-pledge" id="toc-our-pledge" class="nav-link" data-scroll-target="#our-pledge">Our Pledge</a></li>
-  <li><a href="#our-standards" id="toc-our-standards" class="nav-link" data-scroll-target="#our-standards">Our Standards</a></li>
-  <li><a href="#enforcement-responsibilities" id="toc-enforcement-responsibilities" class="nav-link" data-scroll-target="#enforcement-responsibilities">Enforcement Responsibilities</a></li>
-  <li><a href="#scope" id="toc-scope" class="nav-link" data-scroll-target="#scope">Scope</a></li>
-  <li><a href="#enforcement" id="toc-enforcement" class="nav-link" data-scroll-target="#enforcement">Enforcement</a></li>
-  <li><a href="#enforcement-guidelines" id="toc-enforcement-guidelines" class="nav-link" data-scroll-target="#enforcement-guidelines">Enforcement Guidelines</a>
+  <li><a href="#project-outline" id="toc-project-outline" class="nav-link" data-scroll-target="#project-outline">Project Outline</a>
   <ul class="collapse">
-  <li><a href="#correction" id="toc-correction" class="nav-link" data-scroll-target="#correction">1. Correction</a></li>
-  <li><a href="#warning" id="toc-warning" class="nav-link" data-scroll-target="#warning">2. Warning</a></li>
-  <li><a href="#temporary-ban" id="toc-temporary-ban" class="nav-link" data-scroll-target="#temporary-ban">3. Temporary Ban</a></li>
-  <li><a href="#permanent-ban" id="toc-permanent-ban" class="nav-link" data-scroll-target="#permanent-ban">4. Permanent Ban</a></li>
+  <li><a href="#data-janitor" id="toc-data-janitor" class="nav-link" data-scroll-target="#data-janitor">Data janitor</a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
+  <li><a href="#test-files" id="toc-test-files" class="nav-link" data-scroll-target="#test-files">Test Files</a></li>
+  <li><a href="#relation-to-the-python-ecosystem" id="toc-relation-to-the-python-ecosystem" class="nav-link" data-scroll-target="#relation-to-the-python-ecosystem">Relation to the Python ecosystem</a></li>
   </ul></li>
-  <li><a href="#attribution" id="toc-attribution" class="nav-link" data-scroll-target="#attribution">Attribution</a></li>
+  <li><a href="#get-started" id="toc-get-started" class="nav-link" data-scroll-target="#get-started">Get started</a></li>
+  <li><a href="#development-and-documentation-guide" id="toc-development-and-documentation-guide" class="nav-link" data-scroll-target="#development-and-documentation-guide">Development and Documentation Guide</a>
+  <ul class="collapse">
+  <li><a href="#clone-the-repository" id="toc-clone-the-repository" class="nav-link" data-scroll-target="#clone-the-repository">Clone the repository</a></li>
+  <li><a href="#set-up-the-development-environment" id="toc-set-up-the-development-environment" class="nav-link" data-scroll-target="#set-up-the-development-environment">Set up the development environment</a></li>
+  <li><a href="#install-the-package" id="toc-install-the-package" class="nav-link" data-scroll-target="#install-the-package">Install the package</a></li>
+  <li><a href="#run-tests" id="toc-run-tests" class="nav-link" data-scroll-target="#run-tests">Run tests</a></li>
+  <li><a href="#build-documentation" id="toc-build-documentation" class="nav-link" data-scroll-target="#build-documentation">Build documentation</a></li>
+  <li><a href="#deploy-documentation-automated" id="toc-deploy-documentation-automated" class="nav-link" data-scroll-target="#deploy-documentation-automated">Deploy documentation (automated)</a></li>
+  </ul></li>
+  <li><a href="#example-usage" id="toc-example-usage" class="nav-link" data-scroll-target="#example-usage">Example usage</a></li>
+  <li><a href="#contributors" id="toc-contributors" class="nav-link" data-scroll-target="#contributors">Contributors</a></li>
+  <li><a href="#copyright" id="toc-copyright" class="nav-link" data-scroll-target="#copyright">Copyright</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -134,77 +176,123 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="contributor-covenant-code-of-conduct" class="level1">
-<h1>Contributor Covenant Code of Conduct</h1>
-<section id="our-pledge" class="level2">
-<h2 class="anchored" data-anchor-id="our-pledge">Our Pledge</h2>
-<p>We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.</p>
-<p>We pledge to act and interact in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.</p>
+<section id="welcome-to-datajanitor" class="level1">
+<h1>Welcome to datajanitor</h1>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td>Package</td>
+<td><a href="https://pypi.org/project/datajanitor/"><img src="https://img.shields.io/pypi/v/datajanitor.svg" class="img-fluid" alt="Latest PyPI Version"></a> <a href="https://pypi.org/project/datajanitor/"><img src="https://img.shields.io/pypi/pyversions/datajanitor.svg" class="img-fluid" alt="Supported Python Versions"></a></td>
+</tr>
+<tr class="even">
+<td>Meta</td>
+<td><a href="CODE_OF_CONDUCT.md"><img src="https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg" class="img-fluid" alt="Code of Conduct"></a></td>
+</tr>
+</tbody>
+</table>
+<section id="project-outline" class="level2">
+<h2 class="anchored" data-anchor-id="project-outline">Project Outline</h2>
+<section id="data-janitor" class="level3">
+<h3 class="anchored" data-anchor-id="data-janitor">Data janitor</h3>
+<p>This project is a Python package that focuses on basic data cleaning and validation tasks for tabular data, mainly pandas DataFrames. The goal is to make common cleaning steps easier and clearer than writing everything manually in pandas, especially by providing simple function interfaces and clearer error messages.</p>
 </section>
-<section id="our-standards" class="level2">
-<h2 class="anchored" data-anchor-id="our-standards">Our Standards</h2>
-<p>Examples of behavior that contributes to a positive environment for our community include:</p>
+<section id="functions" class="level3">
+<h3 class="anchored" data-anchor-id="functions">Functions</h3>
 <ul>
-<li>Demonstrating empathy and kindness toward other people</li>
-<li>Being respectful of differing opinions, viewpoints, and experiences</li>
-<li>Giving and gracefully accepting constructive feedback</li>
-<li>Accepting responsibility and apologizing to those affected by our mistakes, and learning from the experience</li>
-<li>Focusing on what is best not just for us as individuals, but for the overall community</li>
+<li><p><code>standardize_columns()</code><br>
+Cleans column names by making them consistent (for example, removing extra spaces, converting to lowercase, and replacing spaces with underscores). This helps avoid bugs caused by inconsistent column naming.</p></li>
+<li><p><code>missing_value_handler()</code><br>
+Handles missing values in a DataFrame using simple strategies such as dropping rows or columns, or filling missing values with a constant or summary statistic like the mean or median.</p></li>
+<li><p><code>validate_schema()</code><br>
+Checks whether a DataFrame follows an expected structure, such as having required columns, correct data types, and values within reasonable ranges. If something does not match, the function raises clear errors.</p></li>
+<li><p><code>detect_outliers()</code><br>
+Identifies potential outliers in numeric columns of a dataframe using a rule-based approach and returns a dataframe with removal of rows containing outliers.</p></li>
 </ul>
-<p>Examples of unacceptable behavior include:</p>
+</section>
+<section id="test-files" class="level3">
+<h3 class="anchored" data-anchor-id="test-files">Test Files</h3>
 <ul>
-<li>The use of sexualized language or imagery, and sexual attention or advances of any kind</li>
-<li>Trolling, insulting or derogatory comments, and personal or political attacks</li>
-<li>Public or private harassment</li>
-<li>Publishing others’ private information, such as a physical or email address, without their explicit permission</li>
-<li>Other conduct which could reasonably be considered inappropriate in a professional setting</li>
+<li><p><code>test_detect_outliers.py</code><br>
+This file contains various tests that check detect_outliers() functionality. Testing includes verifying outlier removal using IQR and Z-score methods, column selection behavior, and error handling for invalid inputs and parameters.</p></li>
+<li><p><code>test_missing_value_handler.py</code><br>
+This file contains various tests that check missing_value_handler() functionality. Testing includes verifying correct handling of missing values, unsupported methods, and edge cases such as empty DataFrames and columns with all missing values.</p></li>
+<li><p><code>test_standard_columns.py</code><br>
+This file contains various tests that check standardize_columns() functionality. Testing includes verifying correct column name cleaning behavior, handling of edge cases, and proper error raising for invalid inputs.</p></li>
+<li><p><code>test_validate_schema.py</code><br>
+This file contains various tests that check validate_schema() functionality. Testing includes verifying error output, missing value/column checks, numerical out of bounds validation as well as various other use case instances.</p></li>
 </ul>
 </section>
-<section id="enforcement-responsibilities" class="level2">
-<h2 class="anchored" data-anchor-id="enforcement-responsibilities">Enforcement Responsibilities</h2>
-<p>Community leaders are responsible for clarifying and enforcing our standards of acceptable behavior and will take appropriate and fair corrective action in response to any behavior that they deem inappropriate, threatening, offensive, or harmful.</p>
-<p>Community leaders have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct, and will communicate reasons for moderation decisions when appropriate.</p>
-</section>
-<section id="scope" class="level2">
-<h2 class="anchored" data-anchor-id="scope">Scope</h2>
-<p>This Code of Conduct applies within all community spaces, and also applies when an individual is officially representing the community in public spaces. Examples of representing our community include using an official e-mail address, posting via an official social media account, or acting as an appointed representative at an online or offline event.</p>
-</section>
-<section id="enforcement" class="level2">
-<h2 class="anchored" data-anchor-id="enforcement">Enforcement</h2>
-<p>Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to one of the community leaders responsible for enforcement at yasieft@ubc.ca. All complaints will be reviewed and investigated promptly and fairly.</p>
-<p>All community leaders are obligated to respect the privacy and security of the reporter of any incident.</p>
-<p>As contributors and maintainers of this project, we pledge to follow the The Carpentries Code of Conduct.</p>
-<p>Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by following our reporting guidelines.</p>
-</section>
-<section id="enforcement-guidelines" class="level2">
-<h2 class="anchored" data-anchor-id="enforcement-guidelines">Enforcement Guidelines</h2>
-<p>Community leaders will follow these Community Impact Guidelines in determining the consequences for any action they deem in violation of this Code of Conduct:</p>
-<section id="correction" class="level3">
-<h3 class="anchored" data-anchor-id="correction">1. Correction</h3>
-<p><strong>Community Impact</strong>: Use of inappropriate language or other behavior deemed unprofessional or unwelcome in the community.</p>
-<p><strong>Consequence</strong>: A private, written warning from community leaders, providing clarity around the nature of the violation and an explanation of why the behavior was inappropriate. A public apology may be requested.</p>
-</section>
-<section id="warning" class="level3">
-<h3 class="anchored" data-anchor-id="warning">2. Warning</h3>
-<p><strong>Community Impact</strong>: A violation through a single incident or series of actions.</p>
-<p><strong>Consequence</strong>: A warning with consequences for continued behavior. No interaction with the people involved, including unsolicited interaction with those enforcing the Code of Conduct, for a specified period of time. This includes avoiding interactions in community spaces as well as external channels like social media. Violating these terms may lead to a temporary or permanent ban.</p>
-</section>
-<section id="temporary-ban" class="level3">
-<h3 class="anchored" data-anchor-id="temporary-ban">3. Temporary Ban</h3>
-<p><strong>Community Impact</strong>: A serious violation of community standards, including sustained inappropriate behavior.</p>
-<p><strong>Consequence</strong>: A temporary ban from any sort of interaction or public communication with the community for a specified period of time. No public or private interaction with the people involved, including unsolicited interaction with those enforcing the Code of Conduct, is allowed during this period. Violating these terms may lead to a permanent ban.</p>
-</section>
-<section id="permanent-ban" class="level3">
-<h3 class="anchored" data-anchor-id="permanent-ban">4. Permanent Ban</h3>
-<p><strong>Community Impact</strong>: Demonstrating a pattern of violation of community standards, including sustained inappropriate behavior, harassment of an individual, or aggression toward or disparagement of classes of individuals.</p>
-<p><strong>Consequence</strong>: A permanent ban from any sort of public interaction within the community.</p>
+<section id="relation-to-the-python-ecosystem" class="level3">
+<h3 class="anchored" data-anchor-id="relation-to-the-python-ecosystem">Relation to the Python ecosystem</h3>
+<p>Some existing Python packages provide similar functionality. For example, <code>pandera</code> allows users to define and validate schemas for pandas DataFrames. Outlier detection methods are also available in <code>scikit-learn</code>, which includes more advanced algorithms.<br>
+Compared to these tools, this package is intentionally lightweight and simpler. It is designed for small projects, assignments, or quick checks where a full validation framework would be unnecessary or too complex.</p>
 </section>
 </section>
-<section id="attribution" class="level2">
-<h2 class="anchored" data-anchor-id="attribution">Attribution</h2>
-<p>This Code of Conduct is adapted from the <a href="https://www.contributor-covenant.org">Contributor Covenant</a>, version 2.0, available at https://www.contributor-covenant.org/version/2/0/code_of_conduct.html.</p>
-<p>Community Impact Guidelines were inspired by <a href="https://github.com/mozilla/diversity">Mozilla’s code of conduct enforcement ladder</a>.</p>
-<p>For answers to common questions about this code of conduct, see the FAQ at https://www.contributor-covenant.org/faq. Translations are available at https://www.contributor-covenant.org/translations.</p>
+<section id="get-started" class="level2">
+<h2 class="anchored" data-anchor-id="get-started">Get started</h2>
+<p>You can install this package into your preferred Python environment using pip:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pip install datajanitor</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="development-and-documentation-guide" class="level2">
+<h2 class="anchored" data-anchor-id="development-and-documentation-guide">Development and Documentation Guide</h2>
+<p>This section provides instructions for collaborators on how to set up the development environment, install the package, run tests, and build and deploy documentation.</p>
+<section id="clone-the-repository" class="level3">
+<h3 class="anchored" data-anchor-id="clone-the-repository">Clone the repository</h3>
+<p>Clone the repository and move into the project directory:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git clone <span class="op">&lt;</span>https://github.com/UBC-MDS/DSCI_524_group31_datajanitor.git<span class="op">&gt;</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd DSCI_524_group31_datajanitor</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="set-up-the-development-environment" class="level3">
+<h3 class="anchored" data-anchor-id="set-up-the-development-environment">Set up the development environment</h3>
+<p>The development environment is defined in <code>environment.yml</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate datajanitor</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="install-the-package" class="level3">
+<h3 class="anchored" data-anchor-id="install-the-package">Install the package</h3>
+<p>Install the package in editable mode from the repository root:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-e</span> .</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="run-tests" class="level3">
+<h3 class="anchored" data-anchor-id="run-tests">Run tests</h3>
+<p>Run the full test suite using pytest:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pytest</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="build-documentation" class="level3">
+<h3 class="anchored" data-anchor-id="build-documentation">Build documentation</h3>
+<p>Documentation is built using Quarto with quartodoc for automatic API generation.</p>
+<p>To build the documentation locally:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To preview the documentation:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="deploy-documentation-automated" class="level3">
+<h3 class="anchored" data-anchor-id="deploy-documentation-automated">Deploy documentation (automated)</h3>
+<p>Documentation is built using Quarto with quartodoc for automatic API generation.</p>
+<p>On pushes to the deployment branch (typically main), the documentation workflow builds the site and publishes it to GitHub Pages automatically.</p>
+</section>
+</section>
+<section id="example-usage" class="level2">
+<h2 class="anchored" data-anchor-id="example-usage">Example usage</h2>
+<p>Below is a simple example demonstrating how to use one of the package functions.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datajanitor.standard_columns <span class="im">import</span> standardize_columns</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">" First Name "</span>: [<span class="dv">1</span>], <span class="st">"AGE"</span>: [<span class="dv">20</span>]})</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>out <span class="op">=</span> standardize_columns(df)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>out.columns.tolist()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="contributors" class="level2">
+<h2 class="anchored" data-anchor-id="contributors">Contributors</h2>
+<p>Group 31: Karan Partap Bains, Yasaman Eftekharypour, Sameel Syed, Yuting Ji</p>
+</section>
+<section id="copyright" class="level2">
+<h2 class="anchored" data-anchor-id="copyright">Copyright</h2>
+<ul>
+<li>Copyright © 2026 Karan Bains, Yasaman Eftekharypour, Sameel Syed, Yuting Ji.</li>
+<li>Free software distributed under the <a href="./LICENSE">MIT License</a>.</li>
+</ul>
 
 
 </section>

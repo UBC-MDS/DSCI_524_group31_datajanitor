@@ -1,39 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://UBC-MDS.github.io/DSCI_524_group31_datajanitor/CODE_OF_CONDUCT.html</loc>
-    <lastmod>2026-01-29T20:13:40.967Z</lastmod>
-  </url>
-  <url>
-    <loc>https://UBC-MDS.github.io/DSCI_524_group31_datajanitor/reference/detect_outliers.html</loc>
-    <lastmod>2026-01-29T20:14:07.124Z</lastmod>
-  </url>
-  <url>
-    <loc>https://UBC-MDS.github.io/DSCI_524_group31_datajanitor/reference/standard_columns.html</loc>
-    <lastmod>2026-01-29T20:14:07.115Z</lastmod>
-  </url>
-  <url>
-    <loc>https://UBC-MDS.github.io/DSCI_524_group31_datajanitor/CONTRIBUTING.html</loc>
-    <lastmod>2026-01-29T20:13:40.967Z</lastmod>
-  </url>
-  <url>
-    <loc>https://UBC-MDS.github.io/DSCI_524_group31_datajanitor/CHANGELOG.html</loc>
-    <lastmod>2026-01-29T20:13:40.967Z</lastmod>
-  </url>
-  <url>
-    <loc>https://UBC-MDS.github.io/DSCI_524_group31_datajanitor/DEVELOPMENT.html</loc>
-    <lastmod>2026-01-29T20:13:40.967Z</lastmod>
-  </url>
-  <url>
-    <loc>https://UBC-MDS.github.io/DSCI_524_group31_datajanitor/reference/missing_value_handler.html</loc>
-    <lastmod>2026-01-29T20:14:07.109Z</lastmod>
+    <loc>https://UBC-MDS.github.io/DSCI_524_group31_datajanitor/reference/validate_schema.html</loc>
+    <lastmod>2026-01-29T22:38:29.398Z</lastmod>
   </url>
   <url>
     <loc>https://UBC-MDS.github.io/DSCI_524_group31_datajanitor/reference/index.html</loc>
-    <lastmod>2026-01-29T20:14:07.070Z</lastmod>
+    <lastmod>2026-01-29T22:38:29.366Z</lastmod>
   </url>
   <url>
-    <loc>https://UBC-MDS.github.io/DSCI_524_group31_datajanitor/reference/validate_schema.html</loc>
-    <lastmod>2026-01-29T20:14:07.101Z</lastmod>
+    <loc>https://UBC-MDS.github.io/DSCI_524_group31_datajanitor/reference/missing_value_handler.html</loc>
+    <lastmod>2026-01-29T22:38:29.406Z</lastmod>
+  </url>
+  <url>
+    <loc>https://UBC-MDS.github.io/DSCI_524_group31_datajanitor/README.html</loc>
+    <lastmod>2026-01-29T22:38:05.015Z</lastmod>
+  </url>
+  <url>
+    <loc>https://UBC-MDS.github.io/DSCI_524_group31_datajanitor/CONTRIBUTING.html</loc>
+    <lastmod>2026-01-29T22:38:05.015Z</lastmod>
+  </url>
+  <url>
+    <loc>https://UBC-MDS.github.io/DSCI_524_group31_datajanitor/reference/standard_columns.html</loc>
+    <lastmod>2026-01-29T22:38:29.412Z</lastmod>
+  </url>
+  <url>
+    <loc>https://UBC-MDS.github.io/DSCI_524_group31_datajanitor/reference/detect_outliers.html</loc>
+    <lastmod>2026-01-29T22:38:29.421Z</lastmod>
   </url>
 </urlset>
