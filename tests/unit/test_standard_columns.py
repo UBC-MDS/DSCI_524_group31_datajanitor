@@ -114,3 +114,13 @@ def test_standardize_columns_preserves_non_whitespace_characters():
     out = standardize_columns(df)
 
     assert out.columns.tolist() == ["total-cost_($)", "net%_profit"]
+
+def test_standardize_columns_non_string_becomes_empty():
+    """
+    Edge case: non-string column name that becomes empty after cleaning.
+    For example, an empty string or a column name that's only underscores.
+    """
+    df = pd.DataFrame({"": [1], "valid": [2], "___": [3]})
+    
+    with pytest.raises(ValueError, match="empty"):
+        standardize_columns(df)
