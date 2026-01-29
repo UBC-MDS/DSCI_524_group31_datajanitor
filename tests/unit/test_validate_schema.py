@@ -190,3 +190,24 @@ def test_validate_schema_optional_column_not_required():
     }
 
     assert validate_schema(data, schema) is None
+
+def test_validate_schema_multiple_errors():
+    """Tests that all validation errors are captured and reported together."""
+    data = pd.DataFrame({
+        "customer": ["Sam", None],
+        "age": ["20", "30"], 
+    })
+    
+    schema = {
+        "customer": {"type": "str"},
+        "age": {"type": "int"},
+        "purchase_amount": {"type": "int"},
+    }
+    
+    with pytest.raises(SchemaValidationError) as excinfo:
+        validate_schema(data, schema)
+
+    assert len(excinfo.value.errors) == 3
+    assert "customer" in excinfo.value.errors
+    assert "age" in excinfo.value.errors
+    assert "purchase_amount" in excinfo.value.errors
