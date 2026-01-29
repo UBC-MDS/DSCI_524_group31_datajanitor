@@ -20,7 +20,7 @@ authors = [
     { name = "Karan Bains, Yasaman Eftekharypour, Sameel Syed, Yuting Ji", email = "karanbains1234@gmail.com" },
 ]
 license = "MIT"
-requires-python = ">= 3.10" # Adjust based on the minimum version of Python that you support
+requires-python = ">= 3.11" # Adjust based on the minimum version of Python that you support
 readme = {"file" = "README.md", "content-type" = "text/markdown"}
 # Please consult https://pypi.org/classifiers/ for a full list.
 classifiers = [
@@ -73,7 +73,7 @@ tests = [
     "pytest-raises",
     "pytest-randomly",
     "pytest-xdist",
-    "pandas"
+    "pandas~=3.0.0"
 ]
 
 
