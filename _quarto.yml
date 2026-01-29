@@ -1,7 +1,12 @@
 project:
   type: website
   output-dir: docs
-
+  render:
+    - index.qmd
+    - README.md
+    - CONTRIBUTING.md
+    - reference/
+    
 website:
   title: "Data Janitor"
   navbar:
