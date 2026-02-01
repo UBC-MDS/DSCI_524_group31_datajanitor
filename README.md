@@ -267,10 +267,10 @@ Compared to these tools, this package is intentionally lightweight and simpler. 
 ### Contributors
 
 Group 31: 
-- Karan Partap Bains [@karanbayns](https://github.com/karanbayns)
-- Yasaman Eftekharypour [@yasi44](https://github.com/yasi44)
-- Sameel Syed [@SamSyed12](https://github.com/SamSyed12)
-- Yuting Ji [@YutingJi894](https://github.com/YutingJi894)
+- Karan Partap Bains [@karanbayns](https://github.com/karanbayns) karanb18@student.ubc.ca
+- Yasaman Eftekharypour [@yasi44](https://github.com/yasi44) yasimailak@gmail.com
+- Sameel Syed [@SamSyed12](https://github.com/SamSyed12) sameel12@student.ubc.ca
+- Yuting Ji [@YutingJi894](https://github.com/YutingJi894) yutingj894@gmail.com
 
 ### Copyright
 
