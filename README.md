@@ -9,9 +9,10 @@
 
 ### Data janitor
 
-This project is a Python package that focuses on basic data cleaning and validation tasks for tabular data, mainly pandas DataFrames. The goal is to make common cleaning steps easier and clearer than writing everything manually in pandas, especially by providing simple function interfaces and clearer error messages.
+`Datajanitor` is a Python package that focuses on basic data cleaning and validation tasks for tabular data, mainly pandas DataFrames. The goal is to make common cleaning steps easier and clearer than writing everything manually in pandas, especially by providing simple function interfaces and clearer error messages.
 
 ### Functions
+This package contains four main functions:
 
 -   `standardize_columns()`\
     Cleans column names by making them consistent (for example, removing extra spaces, converting to lowercase, and replacing spaces with underscores). This helps avoid bugs caused by inconsistent column naming.
@@ -24,6 +25,182 @@ This project is a Python package that focuses on basic data cleaning and validat
 
 -   `detect_outliers()`\
     Identifies potential outliers in numeric columns of a dataframe using a rule-based approach and returns a dataframe with removal of rows containing outliers.
+
+NOTE: This package includes no built-in datasets, and all functionality relies on inputs provided by the user.
+
+### Dependencies
+`Datajanitor` depends on the following:
+- `Python` 3.10 or later
+- `Pandas` for data manipulation and tabular display of schedules and tasks
+- `pip` for installation and dependency management
+
+
+### How to use `Datajanitor`
+
+<!-- You can install this package into your preferred Python environment using pip:
+
+``` bash
+$ pip install datajanitor
+``` -->
+#### Installation
+To install the latest release from Test PyPi: 
+``` bash
+pip install -i https://test.pypi.org/simple/ datajanitor
+```
+
+#### Example usage
+
+Below is a simple example demonstrating how to use one of the package functions.
+<!-- 
+``` python
+import pandas as pd
+from datajanitor.standard_columns import standardize_columns
+
+df = pd.DataFrame({" First Name ": [1], "AGE": [20]})
+out = standardize_columns(df)
+
+out.columns.tolist()
+``` -->
+
+
+```python
+import pandas as pd
+
+from datajanitor.standard_columns import standardize_columns
+from datajanitor.missing_values import missing_value_handler
+from datajanitor.schema_validation import validate_schema
+from datajanitor.outliers import detect_outliers
+
+
+# ----------------------------
+# 1. Create Sample Data
+# ----------------------------
+df = pd.DataFrame({
+    " First Name ": ["Alice", "Bob", "Charlie", None, "Eve", "Frank"],
+    "AGE": [25, 30, 120, 28, 35, 27],
+    "Salary ": [50000, None, 70000, 52000, 48000, 600000],
+    "Department": ["HR", "IT", "Finance", "IT", None, "Finance"]
+})
+
+print("Original DataFrame:")
+print(df)
+print("\n")
+```
+
+##### Step 1: Standardize Column Names
+```python
+df = standardize_columns(df)
+print("After Standardizing Columns:")
+print(df.columns.tolist())
+print(df.head())
+print("\n")
+
+```
+
+##### Step 2: Handle Missing Values
+```python
+df = missing_value_handler(
+    df,
+    strategy="mean",             # Fill numeric columns with mean
+    drop_na=["department"],      # Drop rows where department is missing
+    fill_value={"first_name": "Unknown"}  # Fill missing names
+)
+
+print("After Handling Missing Values:")
+print(df)
+print("\n")
+
+```
+
+##### Step 3: Validate Schema
+```python
+expected_schema = {
+    "first_name": str,
+    "age": int,
+    "salary": float,
+    "department": str
+}
+
+validate_schema(df, expected_schema)
+print("Schema validation passed!")
+print("\n")
+
+```
+
+##### Step 4: Detect and Remove Outliers
+```python
+clean_df = detect_outliers(
+    df,
+    columns=["age", "salary"],
+    method="IQR"  # Example method
+)
+
+print("After Removing Outliers:")
+print(clean_df)
+print("\n")
+
+```
+
+##### Final Output
+```python
+print("Cleaned DataFrame ready for analysis:")
+print(clean_df)
+
+```
+
+### Development and Documentation Guide
+
+This section provides instructions for collaborators on how to set up the development environment, install the package, run tests, and build and deploy documentation.
+
+#### Clone the repository
+
+Clone the repository and move into the project directory:
+
+``` bash
+$ git clone <https://github.com/UBC-MDS/DSCI_524_group31_datajanitor.git> 
+$ cd DSCI_524_group31_datajanitor
+```
+
+#### Set up the development environment
+
+The development environment is defined in `environment.yml`.
+
+``` bash
+conda env create -f environment.yml
+conda activate datajanitor
+```
+
+#### Installation
+Install the package in editable mode from the repository root:
+
+``` bash
+pip install -e .
+```
+
+#### Run tests
+
+Run the full test suite using pytest:
+
+``` bash
+pytest
+```
+
+#### Build documentation
+
+Documentation is built using [Quarto](https://quarto.org/) with [quartodoc](https://machow.github.io/quartodoc/) for automatic API generation:
+
+** #todo: Do i have to write steps 
+
+
+
+
+#### Deploy documentation (automated)
+
+This project uses GitHub Actions for continuous integration and deployment.
+
+Runs on pushes and pull requests to the main branch to build the Quartodoc API reference, render the Quarto site, and publish it to GitHub Pages via the [gh-pages](https://github.com/UBC-MDS/DSCI_524_group31_datajanitor/tree/gh-pages) branch
+
+
 
 ### Test Files
 
@@ -44,93 +221,16 @@ This project is a Python package that focuses on basic data cleaning and validat
 Some existing Python packages provide similar functionality. For example, `pandera` allows users to define and validate schemas for pandas DataFrames. Outlier detection methods are also available in `scikit-learn`, which includes more advanced algorithms.\
 Compared to these tools, this package is intentionally lightweight and simpler. It is designed for small projects, assignments, or quick checks where a full validation framework would be unnecessary or too complex.
 
-## Get started
 
-You can install this package into your preferred Python environment using pip:
+### Contributors
 
-``` bash
-$ pip install datajanitor
-```
+Group 31: 
+- Karan Partap Bains [@karanbayns](https://github.com/karanbayns)
+- Yasaman Eftekharypour [@yasi44](https://github.com/yasi44)
+- Sameel Syed [@SamSyed12](https://github.com/SamSyed12)
+- Yuting Ji [@YutingJi894](https://github.com/YutingJi894)
 
-## Development and Documentation Guide
-
-This section provides instructions for collaborators on how to set up the development environment, install the package, run tests, and build and deploy documentation.
-
-### Clone the repository
-
-Clone the repository and move into the project directory:
-
-``` bash
-$ git clone <https://github.com/UBC-MDS/DSCI_524_group31_datajanitor.git> 
-$ cd DSCI_524_group31_datajanitor
-```
-
-### Set up the development environment
-
-The development environment is defined in `environment.yml`.
-
-``` bash
-conda env create -f environment.yml
-conda activate datajanitor
-```
-
-### Install the package
-
-Install the package in editable mode from the repository root:
-
-``` bash
-pip install -e .
-```
-
-### Run tests
-
-Run the full test suite using pytest:
-
-``` bash
-pytest
-```
-
-### Build documentation
-
-Documentation is built using Quarto with quartodoc for automatic API generation.
-
-To build the documentation locally:
-
-``` bash
-quarto render
-```
-
-To preview the documentation:
-
-``` bash
-quarto preview
-```
-
-### Deploy documentation (automated)
-
-Documentation is built using Quarto with quartodoc for automatic API generation.
-
-On pushes to the deployment branch (typically main), the documentation workflow builds the site and publishes it to GitHub Pages automatically.
-
-## Example usage
-
-Below is a simple example demonstrating how to use one of the package functions.
-
-``` python
-import pandas as pd
-from datajanitor.standard_columns import standardize_columns
-
-df = pd.DataFrame({" First Name ": [1], "AGE": [20]})
-out = standardize_columns(df)
-
-out.columns.tolist()
-```
-
-## Contributors
-
-Group 31: Karan Partap Bains, Yasaman Eftekharypour, Sameel Syed, Yuting Ji
-
-## Copyright
+### Copyright
 
 -   Copyright © 2026 Karan Bains, Yasaman Eftekharypour, Sameel Syed, Yuting Ji.
 -   Free software distributed under the [MIT License](./LICENSE).
