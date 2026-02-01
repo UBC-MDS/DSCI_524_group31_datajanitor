@@ -150,22 +150,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#data-janitor" id="toc-data-janitor" class="nav-link" data-scroll-target="#data-janitor">Data janitor</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
+  <li><a href="#dependencies" id="toc-dependencies" class="nav-link" data-scroll-target="#dependencies">Dependencies</a></li>
+  <li><a href="#how-to-use-datajanitor" id="toc-how-to-use-datajanitor" class="nav-link" data-scroll-target="#how-to-use-datajanitor">How to use <code>Datajanitor</code></a></li>
+  <li><a href="#development-and-documentation-guide" id="toc-development-and-documentation-guide" class="nav-link" data-scroll-target="#development-and-documentation-guide">Development and Documentation Guide</a></li>
   <li><a href="#test-files" id="toc-test-files" class="nav-link" data-scroll-target="#test-files">Test Files</a></li>
   <li><a href="#relation-to-the-python-ecosystem" id="toc-relation-to-the-python-ecosystem" class="nav-link" data-scroll-target="#relation-to-the-python-ecosystem">Relation to the Python ecosystem</a></li>
-  </ul></li>
-  <li><a href="#get-started" id="toc-get-started" class="nav-link" data-scroll-target="#get-started">Get started</a></li>
-  <li><a href="#development-and-documentation-guide" id="toc-development-and-documentation-guide" class="nav-link" data-scroll-target="#development-and-documentation-guide">Development and Documentation Guide</a>
-  <ul class="collapse">
-  <li><a href="#clone-the-repository" id="toc-clone-the-repository" class="nav-link" data-scroll-target="#clone-the-repository">Clone the repository</a></li>
-  <li><a href="#set-up-the-development-environment" id="toc-set-up-the-development-environment" class="nav-link" data-scroll-target="#set-up-the-development-environment">Set up the development environment</a></li>
-  <li><a href="#install-the-package" id="toc-install-the-package" class="nav-link" data-scroll-target="#install-the-package">Install the package</a></li>
-  <li><a href="#run-tests" id="toc-run-tests" class="nav-link" data-scroll-target="#run-tests">Run tests</a></li>
-  <li><a href="#build-documentation" id="toc-build-documentation" class="nav-link" data-scroll-target="#build-documentation">Build documentation</a></li>
-  <li><a href="#deploy-documentation-automated" id="toc-deploy-documentation-automated" class="nav-link" data-scroll-target="#deploy-documentation-automated">Deploy documentation (automated)</a></li>
-  </ul></li>
-  <li><a href="#example-usage" id="toc-example-usage" class="nav-link" data-scroll-target="#example-usage">Example usage</a></li>
   <li><a href="#contributors" id="toc-contributors" class="nav-link" data-scroll-target="#contributors">Contributors</a></li>
   <li><a href="#copyright" id="toc-copyright" class="nav-link" data-scroll-target="#copyright">Copyright</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -194,10 +186,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="project-outline">Project Outline</h2>
 <section id="data-janitor" class="level3">
 <h3 class="anchored" data-anchor-id="data-janitor">Data janitor</h3>
-<p>This project is a Python package that focuses on basic data cleaning and validation tasks for tabular data, mainly pandas DataFrames. The goal is to make common cleaning steps easier and clearer than writing everything manually in pandas, especially by providing simple function interfaces and clearer error messages.</p>
+<p><code>Datajanitor</code> is a Python package that focuses on basic data cleaning and validation tasks for tabular data, mainly pandas DataFrames. The goal is to make common cleaning steps easier and clearer than writing everything manually in pandas, especially by providing simple function interfaces and clearer error messages.</p>
 </section>
 <section id="functions" class="level3">
 <h3 class="anchored" data-anchor-id="functions">Functions</h3>
+<p>This package contains four main functions:</p>
 <ul>
 <li><p><code>standardize_columns()</code><br>
 Cleans column names by making them consistent (for example, removing extra spaces, converting to lowercase, and replacing spaces with underscores). This helps avoid bugs caused by inconsistent column naming.</p></li>
@@ -208,6 +201,145 @@ Checks whether a DataFrame follows an expected structure, such as having require
 <li><p><code>detect_outliers()</code><br>
 Identifies potential outliers in numeric columns of a dataframe using a rule-based approach and returns a dataframe with removal of rows containing outliers.</p></li>
 </ul>
+<p>NOTE: This package includes no built-in datasets, and all functionality relies on inputs provided by the user.</p>
+</section>
+<section id="dependencies" class="level3">
+<h3 class="anchored" data-anchor-id="dependencies">Dependencies</h3>
+<p><code>Datajanitor</code> depends on the following: - <code>Python</code> 3.10 or later - <code>Pandas</code> for data manipulation and tabular display of schedules and tasks - <code>pip</code> for installation and dependency management</p>
+</section>
+<section id="how-to-use-datajanitor" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-use-datajanitor">How to use <code>Datajanitor</code></h3>
+<!-- You can install this package into your preferred Python environment using pip:
+
+``` bash
+$ pip install datajanitor
+``` -->
+<section id="installation" class="level4">
+<h4 class="anchored" data-anchor-id="installation">Installation</h4>
+<p>To install the latest release from Test PyPi:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-i</span> https://test.pypi.org/simple/ datajanitor</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="example-usage" class="level4">
+<h4 class="anchored" data-anchor-id="example-usage">Example usage</h4>
+<p>Below is a simple example demonstrating how to use one of the package functions. <!-- 
+``` python
+import pandas as pd
+from datajanitor.standard_columns import standardize_columns
+
+df = pd.DataFrame({" First Name ": [1], "AGE": [20]})
+out = standardize_columns(df)
+
+out.columns.tolist()
+``` --></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datajanitor.standard_columns <span class="im">import</span> standardize_columns</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datajanitor.missing_values <span class="im">import</span> missing_value_handler</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datajanitor.schema_validation <span class="im">import</span> validate_schema</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datajanitor.outliers <span class="im">import</span> detect_outliers</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Create Sample Data</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">" First Name "</span>: [<span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Charlie"</span>, <span class="va">None</span>, <span class="st">"Eve"</span>, <span class="st">"Frank"</span>],</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"AGE"</span>: [<span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">120</span>, <span class="dv">28</span>, <span class="dv">35</span>, <span class="dv">27</span>],</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Salary "</span>: [<span class="dv">50000</span>, <span class="va">None</span>, <span class="dv">70000</span>, <span class="dv">52000</span>, <span class="dv">48000</span>, <span class="dv">600000</span>],</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Department"</span>: [<span class="st">"HR"</span>, <span class="st">"IT"</span>, <span class="st">"Finance"</span>, <span class="st">"IT"</span>, <span class="va">None</span>, <span class="st">"Finance"</span>]</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Original DataFrame:"</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="step-1-standardize-column-names" class="level5">
+<h5 class="anchored" data-anchor-id="step-1-standardize-column-names">Step 1: Standardize Column Names</h5>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> standardize_columns(df)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"After Standardizing Columns:"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.columns.tolist())</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.head())</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="step-2-handle-missing-values" class="level5">
+<h5 class="anchored" data-anchor-id="step-2-handle-missing-values">Step 2: Handle Missing Values</h5>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> missing_value_handler(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    df,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    strategy<span class="op">=</span><span class="st">"mean"</span>,             <span class="co"># Fill numeric columns with mean</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    drop_na<span class="op">=</span>[<span class="st">"department"</span>],      <span class="co"># Drop rows where department is missing</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    fill_value<span class="op">=</span>{<span class="st">"first_name"</span>: <span class="st">"Unknown"</span>}  <span class="co"># Fill missing names</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"After Handling Missing Values:"</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="step-3-validate-schema" class="level5">
+<h5 class="anchored" data-anchor-id="step-3-validate-schema">Step 3: Validate Schema</h5>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>expected_schema <span class="op">=</span> {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"first_name"</span>: <span class="bu">str</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"age"</span>: <span class="bu">int</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"salary"</span>: <span class="bu">float</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"department"</span>: <span class="bu">str</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>validate_schema(df, expected_schema)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Schema validation passed!"</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="step-4-detect-and-remove-outliers" class="level5">
+<h5 class="anchored" data-anchor-id="step-4-detect-and-remove-outliers">Step 4: Detect and Remove Outliers</h5>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>clean_df <span class="op">=</span> detect_outliers(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    df,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[<span class="st">"age"</span>, <span class="st">"salary"</span>],</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    method<span class="op">=</span><span class="st">"IQR"</span>  <span class="co"># Example method</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"After Removing Outliers:"</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(clean_df)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="final-output" class="level5">
+<h5 class="anchored" data-anchor-id="final-output">Final Output</h5>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Cleaned DataFrame ready for analysis:"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(clean_df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+</section>
+<section id="development-and-documentation-guide" class="level3">
+<h3 class="anchored" data-anchor-id="development-and-documentation-guide">Development and Documentation Guide</h3>
+<p>This section provides instructions for collaborators on how to set up the development environment, install the package, run tests, and build and deploy documentation.</p>
+<section id="clone-the-repository" class="level4">
+<h4 class="anchored" data-anchor-id="clone-the-repository">Clone the repository</h4>
+<p>Clone the repository and move into the project directory:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git clone <span class="op">&lt;</span>https://github.com/UBC-MDS/DSCI_524_group31_datajanitor.git<span class="op">&gt;</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd DSCI_524_group31_datajanitor</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="set-up-the-development-environment" class="level4">
+<h4 class="anchored" data-anchor-id="set-up-the-development-environment">Set up the development environment</h4>
+<p>The development environment is defined in <code>environment.yml</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate datajanitor</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="installation-1" class="level4">
+<h4 class="anchored" data-anchor-id="installation-1">Installation</h4>
+<p>Install the package in editable mode from the repository root:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-e</span> .</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="run-tests" class="level4">
+<h4 class="anchored" data-anchor-id="run-tests">Run tests</h4>
+<p>Run the full test suite using pytest:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pytest</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="build-documentation" class="level4">
+<h4 class="anchored" data-anchor-id="build-documentation">Build documentation</h4>
+<p>Documentation is built using <a href="https://quarto.org/">Quarto</a> with <a href="https://machow.github.io/quartodoc/">quartodoc</a> for automatic API generation:</p>
+<p>** #todo: Do i have to write steps</p>
+</section>
+<section id="deploy-documentation-automated" class="level4">
+<h4 class="anchored" data-anchor-id="deploy-documentation-automated">Deploy documentation (automated)</h4>
+<p>This project uses GitHub Actions for continuous integration and deployment.</p>
+<p>Runs on pushes and pull requests to the main branch to build the Quartodoc API reference, render the Quarto site, and publish it to GitHub Pages via the <a href="https://github.com/UBC-MDS/DSCI_524_group31_datajanitor/tree/gh-pages">gh-pages</a> branch</p>
+</section>
 </section>
 <section id="test-files" class="level3">
 <h3 class="anchored" data-anchor-id="test-files">Test Files</h3>
@@ -227,74 +359,19 @@ This file contains various tests that check validate_schema() functionality. Tes
 <p>Some existing Python packages provide similar functionality. For example, <code>pandera</code> allows users to define and validate schemas for pandas DataFrames. Outlier detection methods are also available in <code>scikit-learn</code>, which includes more advanced algorithms.<br>
 Compared to these tools, this package is intentionally lightweight and simpler. It is designed for small projects, assignments, or quick checks where a full validation framework would be unnecessary or too complex.</p>
 </section>
+<section id="contributors" class="level3">
+<h3 class="anchored" data-anchor-id="contributors">Contributors</h3>
+<p>Group 31: - Karan Partap Bains <a href="https://github.com/karanbayns"><span class="citation" data-cites="karanbayns">@karanbayns</span></a> - Yasaman Eftekharypour <a href="https://github.com/yasi44"><span class="citation" data-cites="yasi44">@yasi44</span></a> - Sameel Syed <a href="https://github.com/SamSyed12"><span class="citation" data-cites="SamSyed12">@SamSyed12</span></a> - Yuting Ji <a href="https://github.com/YutingJi894"><span class="citation" data-cites="YutingJi894">@YutingJi894</span></a></p>
 </section>
-<section id="get-started" class="level2">
-<h2 class="anchored" data-anchor-id="get-started">Get started</h2>
-<p>You can install this package into your preferred Python environment using pip:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pip install datajanitor</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="development-and-documentation-guide" class="level2">
-<h2 class="anchored" data-anchor-id="development-and-documentation-guide">Development and Documentation Guide</h2>
-<p>This section provides instructions for collaborators on how to set up the development environment, install the package, run tests, and build and deploy documentation.</p>
-<section id="clone-the-repository" class="level3">
-<h3 class="anchored" data-anchor-id="clone-the-repository">Clone the repository</h3>
-<p>Clone the repository and move into the project directory:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git clone <span class="op">&lt;</span>https://github.com/UBC-MDS/DSCI_524_group31_datajanitor.git<span class="op">&gt;</span> </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd DSCI_524_group31_datajanitor</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="set-up-the-development-environment" class="level3">
-<h3 class="anchored" data-anchor-id="set-up-the-development-environment">Set up the development environment</h3>
-<p>The development environment is defined in <code>environment.yml</code>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate datajanitor</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="install-the-package" class="level3">
-<h3 class="anchored" data-anchor-id="install-the-package">Install the package</h3>
-<p>Install the package in editable mode from the repository root:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-e</span> .</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="run-tests" class="level3">
-<h3 class="anchored" data-anchor-id="run-tests">Run tests</h3>
-<p>Run the full test suite using pytest:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pytest</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="build-documentation" class="level3">
-<h3 class="anchored" data-anchor-id="build-documentation">Build documentation</h3>
-<p>Documentation is built using Quarto with quartodoc for automatic API generation.</p>
-<p>To build the documentation locally:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>To preview the documentation:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="deploy-documentation-automated" class="level3">
-<h3 class="anchored" data-anchor-id="deploy-documentation-automated">Deploy documentation (automated)</h3>
-<p>Documentation is built using Quarto with quartodoc for automatic API generation.</p>
-<p>On pushes to the deployment branch (typically main), the documentation workflow builds the site and publishes it to GitHub Pages automatically.</p>
-</section>
-</section>
-<section id="example-usage" class="level2">
-<h2 class="anchored" data-anchor-id="example-usage">Example usage</h2>
-<p>Below is a simple example demonstrating how to use one of the package functions.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datajanitor.standard_columns <span class="im">import</span> standardize_columns</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">" First Name "</span>: [<span class="dv">1</span>], <span class="st">"AGE"</span>: [<span class="dv">20</span>]})</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>out <span class="op">=</span> standardize_columns(df)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>out.columns.tolist()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="contributors" class="level2">
-<h2 class="anchored" data-anchor-id="contributors">Contributors</h2>
-<p>Group 31: Karan Partap Bains, Yasaman Eftekharypour, Sameel Syed, Yuting Ji</p>
-</section>
-<section id="copyright" class="level2">
-<h2 class="anchored" data-anchor-id="copyright">Copyright</h2>
+<section id="copyright" class="level3">
+<h3 class="anchored" data-anchor-id="copyright">Copyright</h3>
 <ul>
 <li>Copyright © 2026 Karan Bains, Yasaman Eftekharypour, Sameel Syed, Yuting Ji.</li>
 <li>Free software distributed under the <a href="./LICENSE">MIT License</a>.</li>
 </ul>
 
 
+</section>
 </section>
 </section>
 
