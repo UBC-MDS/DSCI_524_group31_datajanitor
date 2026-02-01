@@ -14,17 +14,59 @@
 ### Functions
 This package contains four main functions:
 
--   `standardize_columns()`\
+#### `standardize_columns()`
+
+##### Description
     Cleans column names by making them consistent (for example, removing extra spaces, converting to lowercase, and replacing spaces with underscores). This helps avoid bugs caused by inconsistent column naming.
 
--   `missing_value_handler()`\
+##### Input
+`df` (pandas.DataFrame): DataFrame with column names to standardize.
+
+##### Output
+`pandas.DataFrame`: New DataFrame with standardized column names.
+
+
+#### `missing_value_handler()`
+
+##### Descriptio
     Handles missing values in a DataFrame using simple strategies such as dropping rows or columns, or filling missing values with a constant or summary statistic like the mean or median.
 
--   `validate_schema()`\
+##### Input
+- `df` (pandas.DataFrame): DataFrame containing missing values.
+- `strategy` (str): Strategy for filling missing values (e.g., "drop", "mean", "median", "constant").
+- `fill_value` (any, optional): Value to fill when strategy="constant".
+- `drop_na` (list[str], optional): Columns to drop if they contain missing values.
+
+##### Output
+`pandas.DataFrame`: Cleaned DataFrame with missing values handled.
+
+#### `validate_schema()`
+
+##### Description
     Checks whether a DataFrame follows an expected structure, such as having required columns, correct data types, and values within reasonable ranges. If something does not match, the function raises clear errors.
 
--   `detect_outliers()`\
+##### Input
+- `df` (pandas.DataFrame): DataFrame to validate.
+- `schema` (dict): Expected structure in the form {column_name: data_type}.
+
+##### Output
+- `bool`: Returns True if validation passes.
+- Raises ValueError if the schema does not match.
+
+
+#### `detect_outliers()`
+
+##### Description
     Identifies potential outliers in numeric columns of a dataframe using a rule-based approach and returns a dataframe with removal of rows containing outliers.
+
+##### Input
+- `df` (pandas.DataFrame): DataFrame to check for outliers.
+- `columns` (list[str]): Numeric columns to inspect.
+- `method` (str, optional): Outlier detection method (e.g., "IQR").
+
+##### Output
+`pandas.DataFrame`: DataFrame with outlier rows removed.
+
 
 NOTE: This package includes no built-in datasets, and all functionality relies on inputs provided by the user.
 
