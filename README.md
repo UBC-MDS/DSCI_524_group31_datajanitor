@@ -9,7 +9,7 @@
 
 ### Data janitor
 
-`Datajanitor` is a Python package that focuses on basic data cleaning and validation tasks for tabular data, mainly pandas DataFrames. The goal is to make common cleaning steps easier and clearer than writing everything manually in pandas, especially by providing simple function interfaces and clearer error messages.
+[`Datajanitor`](https://ubc-mds.github.io/DSCI_524_group31_datajanitor/README.html) is a Python package that focuses on basic data cleaning and validation tasks for tabular data, mainly pandas DataFrames. The goal is to make common cleaning steps easier and clearer than writing everything manually in pandas, especially by providing simple function interfaces and clearer error messages.
 
 ### Functions
 This package contains four main functions:
