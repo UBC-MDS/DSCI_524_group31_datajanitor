@@ -24,8 +24,10 @@ jobs:
       - name: Build Docs
         run: |
           quartodoc build
-          quarto render
-
+          
+      - name: Render Quarto Project
+        uses: quarto-dev/quarto-actions/render@v2
+        
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v2.0
         with:
