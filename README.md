@@ -2,7 +2,7 @@
 
 |  |  |
 |----|----|
-| Package | [![Latest PyPI Version](https://img.shields.io/pypi/v/datajanitor.svg)](https://pypi.org/project/datajanitor/) [![Supported Python Versions](https://img.shields.io/pypi/pyversions/datajanitor.svg)](https://pypi.org/project/datajanitor/) |
+| Package | [![Latest TestPyPI Version](https://img.shields.io/badge/dynamic/json?label=TestPyPI&query=info.version&url=https%3A%2F%2Ftest.pypi.org%2Fpypi%2Fdatajanitor%2Fjson)](https://test.pypi.org/project/datajanitor/) [![Supported Python Versions](https://img.shields.io/badge/python-3.9+-blue)](https://test.pypi.org/project/datajanitor/) |
 | Meta | [![Code of Conduct](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md) |
 
 ## Project Outline
