@@ -1,0 +1,40 @@
+name: Preview Documentation
+
+on:
+  pull_request:
+    branches: [main, staging]
+
+jobs:
+  docs-preview:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write 
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          
+      - name: Install dependencies
+        run: |
+          pip install ".[tests]" quartodoc
+
+      - name: Build Docs
+        run: |
+          quartodoc build
+          quarto render
+
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v2.0
+        with:
+          publish-dir: './_site'
+          production-branch: main
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: "Deploy from GitHub Actions"
+          enable-pull-request-comment: true
+          overwrites-pull-request-comment: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }} 
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}       
