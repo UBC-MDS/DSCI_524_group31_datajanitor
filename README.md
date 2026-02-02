@@ -229,11 +229,26 @@ pytest
 
 #### Build documentation
 
-Documentation is built using [Quarto](https://quarto.org/) with [quartodoc](https://machow.github.io/quartodoc/) for automatic API generation:
+Documentation is built using [Quarto](https://quarto.org/) with [quartodoc](https://machow.github.io/quartodoc/) using Hatch:
 
-** #todo: Do i have to write steps 
+The documentation is built using Quarto and quartodoc through Hatch.
 
+##### Install the Quarto CLI:
+``` bash
+pip install quarto-cli
+```
 
+##### To preview the documentation locally with live reload:
+``` bash
+hatch run docs:serve
+```
+
+##### Build and render the documentation:
+``` bash
+hatch run docs:build
+```
+
+The generated documentation will be in the docs/ directory.
 
 
 #### Deploy documentation (automated)
@@ -267,10 +282,13 @@ Compared to these tools, this package is intentionally lightweight and simpler. 
 ### Contributors
 
 Group 31: 
-- Karan Partap Bains [@karanbayns](https://github.com/karanbayns) karanb18@student.ubc.ca
-- Yasaman Eftekharypour [@yasi44](https://github.com/yasi44) yasimailak@gmail.com
-- Sameel Syed [@SamSyed12](https://github.com/SamSyed12) sameel12@student.ubc.ca
-- Yuting Ji [@YutingJi894](https://github.com/YutingJi894) yutingj894@gmail.com
+- `Karan Partap Bains` [@karanbayns](https://github.com/karanbayns) karanb18@student.ubc.ca
+
+- `Yasaman Eftekharypour` [@yasi44](https://github.com/yasi44) yasimailak@gmail.com
+
+- `Sameel Syed` [@SamSyed12](https://github.com/SamSyed12) sameel12@student.ubc.ca
+
+- `Yuting Ji` [@YutingJi894](https://github.com/YutingJi894) yutingj894@gmail.com
 
 ### Copyright
 
