@@ -95,7 +95,7 @@ packages = ["src/datajanitor"]
 
 [tool.hatch.version] ##release
 source = "vcs" ##release
-raw-options = {version_scheme = "no_guess_dev", local_scheme = "no_local_version"} ##release
+raw-options = {version_scheme = "no-guess-dev", local_scheme = "no-local-version"} ##release
 
 [tool.hatch.build.hooks.vcs] ##release
 version-file = "src/datajanitor/__version__.py" ##release
