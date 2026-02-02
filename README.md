@@ -9,22 +9,64 @@
 
 ### Data janitor
 
-`Datajanitor` is a Python package that focuses on basic data cleaning and validation tasks for tabular data, mainly pandas DataFrames. The goal is to make common cleaning steps easier and clearer than writing everything manually in pandas, especially by providing simple function interfaces and clearer error messages.
+[`Datajanitor`](https://ubc-mds.github.io/DSCI_524_group31_datajanitor/README.html) is a Python package that focuses on basic data cleaning and validation tasks for tabular data, mainly pandas DataFrames. The goal is to make common cleaning steps easier and clearer than writing everything manually in pandas, especially by providing simple function interfaces and clearer error messages.
 
 ### Functions
 This package contains four main functions:
 
--   `standardize_columns()`\
+#### `standardize_columns()`
+
+##### Description
     Cleans column names by making them consistent (for example, removing extra spaces, converting to lowercase, and replacing spaces with underscores). This helps avoid bugs caused by inconsistent column naming.
 
--   `missing_value_handler()`\
+##### Input
+`df` (pandas.DataFrame): DataFrame with column names to standardize.
+
+##### Output
+`pandas.DataFrame`: New DataFrame with standardized column names.
+
+
+#### `missing_value_handler()`
+
+##### Descriptio
     Handles missing values in a DataFrame using simple strategies such as dropping rows or columns, or filling missing values with a constant or summary statistic like the mean or median.
 
--   `validate_schema()`\
+##### Input
+- `df` (pandas.DataFrame): DataFrame containing missing values.
+- `strategy` (str): Strategy for filling missing values (e.g., "drop", "mean", "median", "constant").
+- `fill_value` (any, optional): Value to fill when strategy="constant".
+- `drop_na` (list[str], optional): Columns to drop if they contain missing values.
+
+##### Output
+`pandas.DataFrame`: Cleaned DataFrame with missing values handled.
+
+#### `validate_schema()`
+
+##### Description
     Checks whether a DataFrame follows an expected structure, such as having required columns, correct data types, and values within reasonable ranges. If something does not match, the function raises clear errors.
 
--   `detect_outliers()`\
+##### Input
+- `df` (pandas.DataFrame): DataFrame to validate.
+- `schema` (dict): Expected structure in the form {column_name: data_type}.
+
+##### Output
+- `bool`: Returns True if validation passes.
+- Raises ValueError if the schema does not match.
+
+
+#### `detect_outliers()`
+
+##### Description
     Identifies potential outliers in numeric columns of a dataframe using a rule-based approach and returns a dataframe with removal of rows containing outliers.
+
+##### Input
+- `df` (pandas.DataFrame): DataFrame to check for outliers.
+- `columns` (list[str]): Numeric columns to inspect.
+- `method` (str, optional): Outlier detection method (e.g., "IQR").
+
+##### Output
+`pandas.DataFrame`: DataFrame with outlier rows removed.
+
 
 NOTE: This package includes no built-in datasets, and all functionality relies on inputs provided by the user.
 
@@ -187,11 +229,26 @@ pytest
 
 #### Build documentation
 
-Documentation is built using [Quarto](https://quarto.org/) with [quartodoc](https://machow.github.io/quartodoc/) for automatic API generation:
+Documentation is built using [Quarto](https://quarto.org/) with [quartodoc](https://machow.github.io/quartodoc/) using Hatch:
 
-** #todo: Do i have to write steps 
+The documentation is built using Quarto and quartodoc through Hatch.
 
+##### Install the Quarto CLI:
+``` bash
+pip install quarto-cli
+```
 
+##### To preview the documentation locally with live reload:
+``` bash
+hatch run docs:serve
+```
+
+##### Build and render the documentation:
+``` bash
+hatch run docs:build
+```
+
+The generated documentation will be in the docs/ directory.
 
 
 #### Deploy documentation (automated)
@@ -225,10 +282,13 @@ Compared to these tools, this package is intentionally lightweight and simpler. 
 ### Contributors
 
 Group 31: 
-- Karan Partap Bains [@karanbayns](https://github.com/karanbayns)
-- Yasaman Eftekharypour [@yasi44](https://github.com/yasi44)
-- Sameel Syed [@SamSyed12](https://github.com/SamSyed12)
-- Yuting Ji [@YutingJi894](https://github.com/YutingJi894)
+- `Karan Partap Bains` [@karanbayns](https://github.com/karanbayns) karanb18@student.ubc.ca
+
+- `Yasaman Eftekharypour` [@yasi44](https://github.com/yasi44) yasimailak@gmail.com
+
+- `Sameel Syed` [@SamSyed12](https://github.com/SamSyed12) sameel12@student.ubc.ca
+
+- `Yuting Ji` [@YutingJi894](https://github.com/YutingJi894) yutingj894@gmail.com
 
 ### Copyright
 
