@@ -28,7 +28,7 @@ This package contains four main functions:
 
 #### `missing_value_handler()`
 
-##### Descriptio
+##### Description
     Handles missing values in a DataFrame using simple strategies such as dropping rows or columns, or filling missing values with a constant or summary statistic like the mean or median.
 
 ##### Input
