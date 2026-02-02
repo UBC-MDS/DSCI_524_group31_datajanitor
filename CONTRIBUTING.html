@@ -122,6 +122,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#get-started" id="toc-get-started" class="nav-link" data-scroll-target="#get-started">Get Started!</a>
   <ul class="collapse">
   <li><a href="#pull-request-guidelines" id="toc-pull-request-guidelines" class="nav-link" data-scroll-target="#pull-request-guidelines">Pull Request Guidelines</a></li>
+  <li><a href="#development-tools-and-github-workflow" id="toc-development-tools-and-github-workflow" class="nav-link" data-scroll-target="#development-tools-and-github-workflow">Development tools and GitHub workflow</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -196,6 +197,11 @@ git push -u origin fix-name-of-your-bugfix</code></pre></li>
 <li>If the pull request adds functionality, the docs should be updated. Put your new functionality into a function with a docstring.</li>
 <li>Your pull request will automatically be checked by the full test suite. It needs to pass all of them before it can be considered for merging.</li>
 </ol>
+</section>
+<section id="development-tools-and-github-workflow" class="level3">
+<h3 class="anchored" data-anchor-id="development-tools-and-github-workflow">Development tools and GitHub workflow</h3>
+<p>This project follows a lightweight but structured development workflow so contributions stay reproducible, reviewable, and safe to merge. The general approach is: keep the local setup consistent across machines, automate code quality checks, and rely on GitHub-based guardrails to catch issues early. A reproducible environment matters here because small differences in dependency versions can cause tests or formatting to behave differently across contributors’ setups. To reduce “style discussion” during review, automated tooling is used to enforce consistent formatting and catch common issues before code is merged. Testing is treated as a core part of development, since data cleaning utilities can break in subtle ways (for example, edge cases like extra whitespace, unusual column names, empty inputs, or unexpected types). Unit tests help protect expected behavior and make refactors safer.</p>
+<p>On the collaboration side, contributions are organized through issues and pull requests, with automated checks running in CI via GitHub Actions. Issues are used to document bugs, feature requests, and design decisions, while pull requests link changes to the relevant discussion and provide a clear summary of what changed and how to test it. Keeping pull requests small and focused (one fix or feature at a time) helps reviews stay efficient and reduces merge conflicts. Overall, these development tools, GitHub infrastructure, and organizational practices are used to keep the codebase stable while making it easy for new contributors to onboard and confidently contribute.</p>
 
 
 </section>
