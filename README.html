@@ -173,12 +173,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <table class="caption-top table">
 <tbody>
 <tr class="odd">
-<td>Package</td>
-<td><a href="https://test.pypi.org/project/datajanitor/"><img src="https://img.shields.io/badge/dynamic/json?label=TestPyPI&amp;query=info.version&amp;url=https%3A%2F%2Ftest.pypi.org%2Fpypi%2Fdatajanitor%2Fjson" class="img-fluid" alt="Latest TestPyPI Version"></a> <a href="https://test.pypi.org/project/datajanitor/"><img src="https://img.shields.io/badge/python-3.9+-blue" class="img-fluid" alt="Supported Python Versions"></a></td>
+<td>Testing</td>
+<td><a href="https://github.com/UBC-MDS/DSCI_524_group31_datajanitor/actions/workflows/build.yml"><img src="https://github.com/UBC-MDS/DSCI_524_group31_datajanitor/actions/workflows/build.yml/badge.svg" class="img-fluid" alt="CI"></a> <a href="https://github.com/UBC-MDS/DSCI_524_group31_datajanitor/actions/workflows/release.yml"><img src="https://github.com/UBC-MDS/DSCI_524_group31_datajanitor/actions/workflows/release.yml/badge.svg" class="img-fluid" alt="CD"></a> <a href="https://codecov.io/gh/UBC-MDS/DSCI_524_group31_datajanitor"><img src="https://codecov.io/gh/UBC-MDS/DSCI_524_group31_datajanitor/branch/main/graph/badge.svg" class="img-fluid" alt="codecov"></a></td>
 </tr>
 <tr class="even">
+<td>Package</td>
+<td><a href="https://test.pypi.org/project/datajanitor/"><img src="https://img.shields.io/badge/TestPyPI-1.0.2-brightgreen" class="img-fluid" alt="TestPyPI"></a> <img src="https://img.shields.io/badge/release-v1.0.2-brightgreen" class="img-fluid" alt="release"> <img src="https://img.shields.io/badge/Python-%3E=3.10-blueviolet" class="img-fluid" alt="Python"> <img src="https://img.shields.io/badge/repo%20status-Active-brightgreen.png" class="img-fluid" alt="repo status"></td>
+</tr>
+<tr class="odd">
 <td>Meta</td>
-<td><a href="CODE_OF_CONDUCT.md"><img src="https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg" class="img-fluid" alt="Code of Conduct"></a></td>
+<td><a href="CODE_OF_CONDUCT.md"><img src="https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg" class="img-fluid" alt="Contributor Covenant"></a> <img src="https://img.shields.io/badge/License-MIT-blue.png" class="img-fluid" alt="License"></td>
 </tr>
 </tbody>
 </table>
@@ -208,8 +212,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="missing_value_handler" class="level4">
 <h4 class="anchored" data-anchor-id="missing_value_handler"><code>missing_value_handler()</code></h4>
-<section id="descriptio" class="level5">
-<h5 class="anchored" data-anchor-id="descriptio">Descriptio</h5>
+<section id="description-1" class="level5">
+<h5 class="anchored" data-anchor-id="description-1">Description</h5>
 <pre><code>Handles missing values in a DataFrame using simple strategies such as dropping rows or columns, or filling missing values with a constant or summary statistic like the mean or median.</code></pre>
 </section>
 <section id="input-1" class="level5">
@@ -228,8 +232,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="validate_schema" class="level4">
 <h4 class="anchored" data-anchor-id="validate_schema"><code>validate_schema()</code></h4>
-<section id="description-1" class="level5">
-<h5 class="anchored" data-anchor-id="description-1">Description</h5>
+<section id="description-2" class="level5">
+<h5 class="anchored" data-anchor-id="description-2">Description</h5>
 <pre><code>Checks whether a DataFrame follows an expected structure, such as having required columns, correct data types, and values within reasonable ranges. If something does not match, the function raises clear errors.</code></pre>
 </section>
 <section id="input-2" class="level5">
@@ -249,8 +253,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="detect_outliers" class="level4">
 <h4 class="anchored" data-anchor-id="detect_outliers"><code>detect_outliers()</code></h4>
-<section id="description-2" class="level5">
-<h5 class="anchored" data-anchor-id="description-2">Description</h5>
+<section id="description-3" class="level5">
+<h5 class="anchored" data-anchor-id="description-3">Description</h5>
 <pre><code>Identifies potential outliers in numeric columns of a dataframe using a rule-based approach and returns a dataframe with removal of rows containing outliers.</code></pre>
 </section>
 <section id="input-3" class="level5">
@@ -376,7 +380,7 @@ out.columns.tolist()
 <section id="clone-the-repository" class="level4">
 <h4 class="anchored" data-anchor-id="clone-the-repository">Clone the repository</h4>
 <p>Clone the repository and move into the project directory:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git clone <span class="op">&lt;</span>https://github.com/UBC-MDS/DSCI_524_group31_datajanitor.git<span class="op">&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git clone https://github.com/UBC-MDS/DSCI_524_group31_datajanitor.git</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd DSCI_524_group31_datajanitor</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="set-up-the-development-environment" class="level4">
