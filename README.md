@@ -199,7 +199,7 @@ This section provides instructions for collaborators on how to set up the develo
 Clone the repository and move into the project directory:
 
 ``` bash
-$ git clone <https://github.com/UBC-MDS/DSCI_524_group31_datajanitor.git> 
+$ git clone https://github.com/UBC-MDS/DSCI_524_group31_datajanitor.git
 $ cd DSCI_524_group31_datajanitor
 ```
 
