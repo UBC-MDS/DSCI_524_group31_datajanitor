@@ -1,9 +1,10 @@
 # Welcome to datajanitor
 
-|  |  |
-|----|----|
-| Package | [![Latest TestPyPI Version](https://img.shields.io/badge/dynamic/json?label=TestPyPI&query=info.version&url=https%3A%2F%2Ftest.pypi.org%2Fpypi%2Fdatajanitor%2Fjson)](https://test.pypi.org/project/datajanitor/) [![Supported Python Versions](https://img.shields.io/badge/python-3.9+-blue)](https://test.pypi.org/project/datajanitor/) |
-| Meta | [![Code of Conduct](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md) |
+| | |
+|---|---|
+| Testing | [![CI](https://github.com/UBC-MDS/DSCI_524_group31_datajanitor/actions/workflows/build.yml/badge.svg)](https://github.com/UBC-MDS/DSCI_524_group31_datajanitor/actions/workflows/build.yml) [![CD](https://github.com/UBC-MDS/DSCI_524_group31_datajanitor/actions/workflows/release.yml/badge.svg)](https://github.com/UBC-MDS/DSCI_524_group31_datajanitor/actions/workflows/release.yml) [![codecov](https://codecov.io/gh/UBC-MDS/DSCI_524_group31_datajanitor/branch/main/graph/badge.svg)](https://codecov.io/gh/UBC-MDS/DSCI_524_group31_datajanitor) |
+| Package | [![TestPyPI](https://img.shields.io/badge/TestPyPI-1.0.2-brightgreen)](https://test.pypi.org/project/datajanitor/) ![release](https://img.shields.io/badge/release-v1.0.2-brightgreen) ![Python](https://img.shields.io/badge/Python->=3.10-blueviolet) ![repo status](https://img.shields.io/badge/repo%20status-Active-brightgreen) |
+| Meta | [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md) ![License](https://img.shields.io/badge/License-MIT-blue) |
 
 ## Project Outline
 
